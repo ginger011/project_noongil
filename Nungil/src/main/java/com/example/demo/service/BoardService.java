@@ -9,9 +9,11 @@
  import com.example.demo.domain.Board; import
  com.example.demo.mapper.BoardMapper;
  
- @Service public class BoardService {
+ @Service
+ public class BoardService {
  
- @Autowired private BoardMapper mapper;
+ @Autowired
+ private BoardMapper mapper;
  
  public List<Board> board(){ return mapper.board(); }
  
