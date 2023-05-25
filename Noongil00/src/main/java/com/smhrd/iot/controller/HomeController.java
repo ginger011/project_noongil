@@ -23,6 +23,8 @@ public class HomeController {
 	public String thym(Model model, HttpSession session) {
 		//Model:request객체랑 비슷한 역할 (데이터 저장)
 		//텍스트 "테스트"
+		//주석
+		// testt2
 		model.addAttribute("test","테스트");
 		
 		Board b = new Board();
