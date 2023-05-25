@@ -18,6 +18,9 @@ public class HomeController {
 	public String basic() {
 		return "basic";
 	}
+	// test
+	//test2
+	//test3
 	
 	@GetMapping(value="/thym")
 	public String thym(Model model, HttpSession session) {
