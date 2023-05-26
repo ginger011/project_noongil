@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 th:text="${test}"></h1>
+	
+	<table border=1>
+		<tr th:object="${board}">
+			<td><span th:text="*{idx}"></span></td>
+			<td><span th:text="*{title}"></span></td>
+			<td><span th:text="*{content}"></span></td>
+			<td><span th:text="*{writer}"></span></td>
+			<td><span th:text="*{indate}"></span></td>
+		</tr>
+	</table>
+	
+	<br>
+	
+	<table border=1>
+		<tr th:each="board:${list}">
+			<td><span th:text="${board.idx}"></span></td>
+			<td><span th:text="${board.title}"></span></td>
+			<td><span th:text="${board.content}"></span></td>
+			<td><span th:text="${board.writer}"></span></td>
+			<td><span th:text="${board.indate}"></span></td>
+		</tr>
+	</table>
+	
+	<br>
+	
+	<table border=1>
+		<tr th:object="${session.board2}">
+			<td><span th:text="*{idx}"></span></td>
+			<td><span th:text="*{title}"></span></td>
+			<td><span th:text="*{content}"></span></td>
+			<td><span th:text="*{writer}"></span></td>
+			<td><span th:text="*{indate}"></span></td>
+		</tr>
+	</table>
+</body>
+</html>

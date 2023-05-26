@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.iot.mapper.BoardMapper"><!-- mapper interface의 경로와 동일 -->
-	<!-- <select id="board" resultType="Board">id -> mapper interface내의 명칭과 동일
+	<select id="board" resultType="Board"><!-- id -> mapper interface내의 명칭과 동일 -->
 		select * from board
-	</select> -->
-	<select id="board" resultType="com.smhrd.iot.domain.Board">
-		select * from blockInfo
 	</select>
 
 </mapper>
