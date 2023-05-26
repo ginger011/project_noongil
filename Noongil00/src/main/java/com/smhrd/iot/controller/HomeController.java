@@ -35,4 +35,9 @@ public class HomeController {
 	public String userReport() {
 		return "userReport";
 	}
+	
+	@GetMapping(value="/basic")
+	public String basic2() {
+		return "basic";
+	}
 }

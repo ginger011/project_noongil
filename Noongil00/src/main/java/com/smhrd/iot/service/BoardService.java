@@ -14,11 +14,18 @@ public class BoardService {
 	@Autowired
 	private BoardMapper mapper;
 	
-	public List<Board> board(){
+	public List<Board> boardList(){
+		
+		System.out.println("인건 먼데 2"+mapper.board());
 		return mapper.board();
+		
 	}
 	
-	public void insert(Board b) {
-		mapper.insert(b);
-	}
+//	public List<Board> board(){
+//		return mapper.board();
+//	}
+//	
+//	public void insert(Board b) {
+//		mapper.insert(b);
+//	}
 }

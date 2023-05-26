@@ -13,4 +13,10 @@ public class Board {
 	private String content;
 	private String writer;
 	private String indate;
+	
+	private String blockID;
+	private String address;
+	private String blockPlace;
+	private String blockXCoordinate;
+	private String blockYCoordinate;
 }
