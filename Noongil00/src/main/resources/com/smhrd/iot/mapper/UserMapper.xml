@@ -6,4 +6,8 @@
 		select count(*) from userInfo where userID=#{userID} and userPW=#{userPW}
 	</select>
 
+	<!-- 사용자 전체 가져오기 -->
+	<select id="userList" resultType="com.smhrd.iot.domain.UserInfo">  
+		select * from userInfo
+	</select>
 </mapper>
