@@ -1,38 +1,93 @@
 package com.smhrd.iot.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.smhrd.iot.domain.UserInfo;
+import com.smhrd.iot.service.ManagerService;
+import com.smhrd.iot.service.UserService;
 
-import com.smhrd.iot.domain.Board;
 
 @Controller
 public class HomeController {
 	
+	@Autowired
+	private ManagerService service;
+	// @Autowired 1개당 주입은 1개만^^ㅋ
+	
+	@Autowired
+	private UserService serviceUser;
+	
+	
+		
 	@GetMapping(value="/")
 	public String basic() {
 		return "index";
 	}
-	// test
-	//test2
-	//test3
+	
+	// 사용자 로그인
+//	@PostMapping(value="")
+//	public String userlogin(String userID, String userPW, HttpSession session) {
+//		System.out.println("id: " + userID + "pw: " + userPW);
+//		int result = service.userLogin(userID, userPW);
+//				
+//		if(result == 1) { // 로그인 성공
+//			System.out.println("성공: " + result);
+//			// 세션에 ID 저장
+//			session.setAttribute("userID", userID);
+//			return "userReport";
+//		}else { // 로그인 실패
+//			System.out.println("실패: " + result);
+//			return "index";
+//		}
+//	}
+
+	
+		// 관리자 로그인
+		@PostMapping(value="/web_user")
+		public String managerlogin(String managerID, String managerPW, HttpSession session) {
+			System.out.println("id: " + managerID + "pw: " + managerPW);
+			int result = service.managerlogin(managerID, managerPW);
+					
+			if(result == 1) { // 로그인 성공
+				System.out.println("성공: " + result);
+				// 세션에 ID 저장
+				session.setAttribute("managerID", managerID);
+				
+				return "index";
+			}else { // 로그인 실패
+				System.out.println("실패: " + result);
+				return "index";
+			}
+		}
+	
+
+		// 사용자 정보 가져오기
+		@GetMapping(value="/user")
+		public String user(Model model, HttpSession session) {
+			UserInfo userInfo = new UserInfo();
+			List<UserInfo> list = serviceUser.userList();
+			model.addAttribute("list", list);
+			session.setAttribute("userInfo", userInfo);
+			return "user";
+		}
+		
+				
 	
 	@GetMapping(value="/map")
 	public String map() {
 		return "map";
 	}
 	
-	@GetMapping(value="/user")
-	public String user() {
-		return "user";
-	}
+	
+	
 	@GetMapping(value="/userReport")
 	public String userReport() {
 		return "userReport";
@@ -43,9 +98,5 @@ public class HomeController {
 		return "basic";
 	}
 	
-	@PostMapping(value="/androidApp")
-	 public void createMember(@RequestBody Board board) {
-        // JSON 데이터를 자바 객체로 변환한 member 객체를 사용하여 회원 생성 로직 수행
-        // ...
-    }
+	
 }
