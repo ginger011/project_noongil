@@ -14,6 +14,16 @@ import com.smhrd.iot.service.UserService;
 @RestController
 @RequestMapping("/android")
 public class AndroidController {
+	
+	@RequestMapping(value="/androidApp")
+	public String createAppMember(@RequestBody String a) {
+		System.out.println(a);
+		System.out.println("받아짐");
+		
+		return null;
+	}
+	
+	
 	// 사용자 로그인
 	//@PostMapping(value="")
 	//public String userlogin(String userID, String userPW, HttpSession session) {
@@ -33,10 +43,5 @@ public class AndroidController {
 
 	
 
-	@RequestMapping(value="/androidApp")
-	 public void createAppMember(String a) {
-		System.out.println(a);
-     System.out.println("받아짐");
-  }
 	
 }
