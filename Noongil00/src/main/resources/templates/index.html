@@ -50,6 +50,7 @@
 
 		<div class="main-body">
 			<div class="main-login">
+				<!-- 로그인 성공시 "~~님 환영합니다"로 바뀌게 -->
 				<span>로그인 해주세요 </span>
 				<button class="btn-login">로그인</button>
 			</div>
@@ -72,15 +73,15 @@
 			</div>
 			<h2>Log In</h2>
 			<h3>Welcome to NoonGil</h3>
-			<form class="login-form">
+			<form class="login-form" action="web_user" method="post">
 				<div class="textbox">
-					<input type="text" placeholder="아이디를 입력해주세요" />
+					<input type="text" placeholder="아이디를 입력해주세요" name="managerID"/>
 					<span class="material-symbols-outlined">
 						account_circle
 					</span>
 				</div>
 				<div class="textbox">
-					<input type="password" placeholder="비밀번호를 입력해주세요">
+					<input type="password" placeholder="비밀번호를 입력해주세요" name="managerPW">
 					<span class="material-symbols-outlined">
 						lock
 					</span>
