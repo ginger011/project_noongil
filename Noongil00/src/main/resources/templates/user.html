@@ -48,7 +48,7 @@
 
         <div class="main-body">
             <div class="main-login">
-                <span>000님 환영합니다 </span>
+                <span><span th:text="${session.managerID}"/>님 환영합니다</span>
                 <button class="btn-login">로그인</button>
             </div>
             <div class="search">
@@ -83,6 +83,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                            <tr th:each="UserInfo:${list}">
+                            <th scope="row">1번</th>
+                            <td><span th:text="${UserInfo.userName}"></span></td>
+                            <td><span th:text="${UserInfo.userBirth}"></td>
+                            <td><span th:text="${UserInfo.userTel}"></td>
+                            <td><span th:text="${UserInfo.userAddress}"></td>
+                            <td><a href=""><span class="material-symbols-outlined">
+                                        settings
+                                    </span></a></td>
+                        </tr>
+                        
+                         <!-- 
+                       
                         <tr>
                             <th scope="row">1번</th>
                             <td>나는야성호</td>
@@ -163,26 +176,7 @@
                                         settings
                                     </span></a></td>
                         </tr>
-                        <tr>
-                            <th scope="row">1번</th>
-                            <td>나는야성호</td>
-                            <td>1998-03-13</td>
-                            <td>010-0000-0000</td>
-                            <td>광주광역시 북구 대천로 195, 000동 0000호</td>
-                            <td><a href=""><span class="material-symbols-outlined">
-                                        settings
-                                    </span></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1번</th>
-                            <td>나는야성호</td>
-                            <td>1998-03-13</td>
-                            <td>010-0000-0000</td>
-                            <td>광주광역시 북구 대천로 195, 000동 0000호</td>
-                            <td><a href=""><span class="material-symbols-outlined">
-                                        settings
-                                    </span></a></td>
-                        </tr>
+                         -->
                     </tbody>
                 </table>
 
