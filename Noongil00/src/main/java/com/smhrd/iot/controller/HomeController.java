@@ -1,15 +1,10 @@
 package com.smhrd.iot.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.smhrd.iot.domain.Board;
 
 @Controller
 public class HomeController {
@@ -18,6 +13,8 @@ public class HomeController {
 	public String basic() {
 		return "index";
 	}
+	
+	
 	// test
 	//test2
 	//test3
