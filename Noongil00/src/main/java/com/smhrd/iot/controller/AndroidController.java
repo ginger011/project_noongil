@@ -33,7 +33,7 @@ public class AndroidController {
 	private UserService service;
 	
 	@PostMapping(value="/androidApp")
-	 public void createAppMember() {
+	 public void createAppMember(@RequestBody UserInfo userInfo) {
      System.out.println("받아짐");
   }
 	
