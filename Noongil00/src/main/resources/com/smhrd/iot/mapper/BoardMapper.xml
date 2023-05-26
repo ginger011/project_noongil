@@ -8,12 +8,11 @@
 		select * from blockInfo
 	</select>
 	
-<<<<<<< HEAD
+
 	<select id="breport" resultType="com.smhrd.iot.domain.Report">
 		select * from userReport
 	</select>
-=======
+
 	
->>>>>>> branch 'master0' of https://github.com/2021-SMHRD-KDT-IoT-9/Nungil.git
 
 </mapper>

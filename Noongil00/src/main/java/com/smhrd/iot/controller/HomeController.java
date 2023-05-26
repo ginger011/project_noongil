@@ -1,14 +1,17 @@
 package com.smhrd.iot.controller;
 
-<<<<<<< HEAD
-=======
+
 
 import java.util.List;
->>>>>>> branch 'master0' of https://github.com/2021-SMHRD-KDT-IoT-9/Nungil.git
+
+import javax.servlet.http.HttpSession;
+
+//github.com/2021-SMHRD-KDT-IoT-9/Nungil.git
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.smhrd.iot.domain.UserInfo;
@@ -33,12 +36,7 @@ public class HomeController {
 		return "index";
 	}
 	
-<<<<<<< HEAD
-	
-	// test
-	//test2
-	//test3
-=======
+
 	// 사용자 로그인
 //	@PostMapping(value="")
 //	public String userlogin(String userID, String userPW, HttpSession session) {
@@ -87,8 +85,7 @@ public class HomeController {
 		}
 		
 				
->>>>>>> branch 'master0' of https://github.com/2021-SMHRD-KDT-IoT-9/Nungil.git
-	
+
 	@GetMapping(value="/map")
 	public String map() {
 		return "map";
