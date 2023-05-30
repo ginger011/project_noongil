@@ -10,4 +10,11 @@
 	<select id="userList" resultType="com.smhrd.iot.domain.UserInfo">  
 		select * from userInfo
 	</select>
+	
+	<!-- 사용자 추가하기 -->
+	<!--
+	<insert id="">
+		insert into userInfo() values()
+	</insert>
+	-->
 </mapper>

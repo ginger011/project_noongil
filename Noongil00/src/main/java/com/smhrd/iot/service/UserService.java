@@ -23,4 +23,13 @@ public class UserService {
 		return mapper.userList();
 	}
 	
+	// 사용자 추가하기
+	public void userInsert(UserInfo userInfo) {
+		mapper.userInsert(userInfo);
+	}
+	
+	
+	// 사용자 정보 수정하기
+	
+	
 }

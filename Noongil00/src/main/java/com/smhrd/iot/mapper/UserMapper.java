@@ -14,4 +14,7 @@ public interface UserMapper {
 	
 	// 사용자 전체 가져오기
 	public List<UserInfo> userList();
+	
+	// 사용자 추가하기
+	public void userInsert(UserInfo userInfo);
 }

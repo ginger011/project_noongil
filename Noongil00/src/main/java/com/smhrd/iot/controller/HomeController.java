@@ -21,7 +21,7 @@ public class HomeController {
 	
 	@Autowired
 	private ManagerService service;
-	// @Autowired 1개당 주입은 1개만^^ㅋ
+	// @Autowired 1개당 주입은 1개만
 	
 	@Autowired
 	private UserService serviceUser;
@@ -51,36 +51,36 @@ public class HomeController {
 //	}
 
 	
-		// 관리자 로그인
-		@PostMapping(value="/web_user")
-		public String managerlogin(String managerID, String managerPW, HttpSession session) {
-			System.out.println("id: " + managerID + "pw: " + managerPW);
-			int result = service.managerlogin(managerID, managerPW);
-					
-			if(result == 1) { // 로그인 성공
-				System.out.println("성공: " + result);
-				// 세션에 ID 저장
-				session.setAttribute("managerID", managerID);
+	// 관리자 로그인
+	@PostMapping(value="/web_user")
+	public String managerlogin(String managerID, String managerPW, HttpSession session) {
+		System.out.println("id: " + managerID + "pw: " + managerPW);
+		int result = service.managerlogin(managerID, managerPW);
 				
-				return "index";
-			}else { // 로그인 실패
-				System.out.println("실패: " + result);
-				return "index";
-			}
+		if(result == 1) { // 로그인 성공
+			System.out.println("성공: " + result);
+			// 세션에 ID 저장
+			session.setAttribute("managerID", managerID);
+			
+			return "index";
+		}else { // 로그인 실패
+			System.out.println("실패: " + result);
+			return "index";
 		}
+	}
 	
 
-		// 사용자 정보 가져오기
-		@GetMapping(value="/user")
-		public String user(Model model, HttpSession session) {
-			UserInfo userInfo = new UserInfo();
-			List<UserInfo> list = serviceUser.userList();
-			model.addAttribute("list", list);
-			session.setAttribute("userInfo", userInfo);
-			return "user";
-		}
+	// 사용자 정보 가져오기
+	@GetMapping(value="/user")
+	public String user(Model model, HttpSession session) {
+		UserInfo userInfo = new UserInfo();
+		List<UserInfo> list = serviceUser.userList();
+		model.addAttribute("list", list);
+		session.setAttribute("userInfo", userInfo);
+		return "user";
+	}
 		
-				
+		
 	
 	@GetMapping(value="/map")
 	public String map() {
