@@ -1,3 +1,4 @@
+// 신고 관리 서비스 
 package com.smhrd.iot.service;
 
 import java.util.List;
@@ -13,10 +14,11 @@ public class ReportService {
 
 	
 	@Autowired
-	private BoardMapper Rmapper;
+	private BoardMapper mapper;
 	
 	public List<Report> reportList(){
-		return Rmapper.breport();
+		System.out.println("이게 머야22"+mapper.breport());
+		return mapper.breport();
 	}
 	
 }

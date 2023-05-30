@@ -11,7 +11,7 @@ import lombok.Setter;
 
 public class Report {
 	
-	private int userResportNum;
+	private int userReportNum;
 	private String userID;
 	private String userReportPlace;
 	private String userReportContent;
