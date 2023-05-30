@@ -19,4 +19,6 @@ public class Board {
 	private String blockPlace;
 	private String blockXCoordinate;
 	private String blockYCoordinate;
+	
+
 }

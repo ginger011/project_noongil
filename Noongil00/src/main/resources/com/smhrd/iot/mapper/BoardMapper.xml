@@ -7,5 +7,12 @@
 	<select id="board" resultType="com.smhrd.iot.domain.Board">
 		select * from blockInfo
 	</select>
+	
+
+	<select id="breport" resultType="com.smhrd.iot.domain.Report">
+		select * from userReport
+	</select>
+
+	
 
 </mapper>
