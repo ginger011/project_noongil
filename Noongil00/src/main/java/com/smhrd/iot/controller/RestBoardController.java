@@ -1,3 +1,5 @@
+// 고장 신고 컨트롤러
+
 package com.smhrd.iot.controller;
 
 import java.util.List;

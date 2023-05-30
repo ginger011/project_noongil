@@ -18,22 +18,10 @@ function loadbreport() {
 				result += "<th><span>"+data[i]['userReportContent']+"</span></th>";
 				result += "<th><span>"+data[i]['userReportState']+"</span></th>";
 				result += "</tr>"
+
+
 			}
-			document.querySelector('.user-div tbody').innerHTML = result;
-		},  //리스트 출력해주는 함수 호출
-		error: function () {
-			alert("통신실패!")
 		}
 	})
 }
 
-console.log("리포트 js 가져오기 성공")
-
-	// <tr tr th: each = "item:${list}" >
-    //                         <th scope="row" th:text="${item.userResportNum}"></th>
-    //                         <td th:text="${item.userID}"></td>
-    //                         <td th:text="${item.userReportPlace}"></td>
-    //                         <td th:text="${item.usetReportContent}"></td>
-    //                         <td th:text="${item.userReportState}"></td>
-    //                         <td th:text="${item.userReportDate}"></td>
-    //                     </tr >
