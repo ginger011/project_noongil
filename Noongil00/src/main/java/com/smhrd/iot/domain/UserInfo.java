@@ -10,9 +10,9 @@ import lombok.Setter;
 public class UserInfo {
 	private String userID;
 	private String userPW;
+	private String caneId;
 	private String userName;
 	private String userAddress;
 	private String userTel;
-	private String userBirth;
-	private String caneId;
+	private String userBirth;	
 }
