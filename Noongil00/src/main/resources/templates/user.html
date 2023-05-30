@@ -27,28 +27,28 @@
     <div class="body-shadow">
         <img src="./img/nungil_back_img.png" alt="" class="back-img">
         <nav class="main-nav">
-			<ul>
-				<li id="move-main">
-					<a href="/noongil/"><span>메인페이지</span></a>
-				</li>
-				<li id="move-jumja">
-					<a href="/noongil/map"><span>점자블록</span></a>
-				</li>
-				<li id="move-error">
-					<a href="/noongil/userReport"><span>고장신고</span></a>
-				</li>
-				<li id="move-memInfo">
-					<a href="/noongil/user"><span>회원정보</span></a>
-				</li>
-				<!-- <li id="move-report">
+            <ul>
+                <li id="move-main">
+                    <a href="/noongil/"><span>메인페이지</span></a>
+                </li>
+                <li id="move-jumja">
+                    <a href="/noongil/map"><span>점자블록</span></a>
+                </li>
+                <li id="move-error">
+                    <a href="/noongil/userReport"><span>고장신고</span></a>
+                </li>
+                <li id="move-memInfo">
+                    <a href="/noongil/user"><span>회원정보</span></a>
+                </li>
+                <!-- <li id="move-report">
 					<a href="#"><span>자동알림</span></a>
 				</li> -->
-			</ul>
-		</nav>
+            </ul>
+        </nav>
 
         <div class="main-body">
             <div class="main-login">
-                <span><span th:text="${session.managerID}"/>님 환영합니다</span>
+                <span><span th:text="${session.managerID}" />님 환영합니다</span>
                 <button class="btn-login">로그인</button>
             </div>
             <div class="search">
@@ -83,100 +83,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <tr th:each="UserInfo:${list}">
-                            <th scope="row">1번</th>
+                        <tr th:each="UserInfo:${list}">
+                            <th scope="row"><span th:text="${UserInfo.userID}"></span></th>
                             <td><span th:text="${UserInfo.userName}"></span></td>
                             <td><span th:text="${UserInfo.userBirth}"></td>
                             <td><span th:text="${UserInfo.userTel}"></td>
                             <td><span th:text="${UserInfo.userAddress}"></td>
-                            <td><a href=""><span class="material-symbols-outlined">
+                            <td><a href="#" class="settings-link"><span class="material-symbols-outlined">
                                         settings
                                     </span></a></td>
                         </tr>
-                        
-                         <!-- 
-                       
-                        <tr>
-                            <th scope="row">1번</th>
-                            <td>나는야성호</td>
-                            <td>1998-03-13</td>
-                            <td>010-0000-0000</td>
-                            <td>광주광역시 북구 대천로 195, 000동 0000호</td>
-                            <td><a href=""><span class="material-symbols-outlined">
-                                        settings
-                                    </span></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1번</th>
-                            <td>나는야성호</td>
-                            <td>1998-03-13</td>
-                            <td>010-0000-0000</td>
-                            <td>광주광역시 북구 대천로 195, 000동 0000호</td>
-                            <td><a href=""><span class="material-symbols-outlined">
-                                        settings
-                                    </span></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1번</th>
-                            <td>나는야성호</td>
-                            <td>1998-03-13</td>
-                            <td>010-0000-0000</td>
-                            <td>광주광역시 북구 대천로 195, 000동 0000호</td>
-                            <td><a href=""><span class="material-symbols-outlined">
-                                        settings
-                                    </span></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1번</th>
-                            <td>나는야성호</td>
-                            <td>1998-03-13</td>
-                            <td>010-0000-0000</td>
-                            <td>광주광역시 북구 대천로 195, 000동 0000호</td>
-                            <td><a href=""><span class="material-symbols-outlined">
-                                        settings
-                                    </span></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1번</th>
-                            <td>나는야성호</td>
-                            <td>1998-03-13</td>
-                            <td>010-0000-0000</td>
-                            <td>광주광역시 북구 대천로 195, 000동 0000호</td>
-                            <td><a href=""><span class="material-symbols-outlined">
-                                        settings
-                                    </span></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1번</th>
-                            <td>나는야성호</td>
-                            <td>1998-03-13</td>
-                            <td>010-0000-0000</td>
-                            <td>광주광역시 북구 대천로 195, 000동 0000호</td>
-                            <td><a href=""><span class="material-symbols-outlined">
-                                        settings
-                                    </span></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1번</th>
-                            <td>나는야성호</td>
-                            <td>1998-03-13</td>
-                            <td>010-0000-0000</td>
-                            <td>광주광역시 북구 대천로 195, 000동 0000호</td>
-                            <td><a href=""><span class="material-symbols-outlined">
-                                        settings
-                                    </span></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1번</th>
-                            <td>나는야성호</td>
-                            <td>1998-03-13</td>
-                            <td>010-0000-0000</td>
-                            <td>광주광역시 북구 대천로 195, 000동 0000호</td>
-                            <td><a href=""><span class="material-symbols-outlined">
-                                        settings
-                                    </span></a></td>
-                        </tr>
-                         -->
+
+
                     </tbody>
                 </table>
 
@@ -194,9 +112,9 @@
                     </ul>
                 </nav>
             </div>
-            <button class="btn-add">사용자 추가</button>
+            <button class="btn-add" style="margin-bottom: 100px;">사용자 추가</button>
         </div>
-        
+
     </div>
 
     <!-- 로그인 창 -->
