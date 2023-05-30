@@ -1,9 +1,13 @@
 package com.smhrd.iot.controller;
 
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+
+//github.com/2021-SMHRD-KDT-IoT-9/Nungil.git
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +36,7 @@ public class HomeController {
 		return "index";
 	}
 	
+
 	// 사용자 로그인
 //	@PostMapping(value="")
 //	public String userlogin(String userID, String userPW, HttpSession session) {
@@ -80,7 +85,7 @@ public class HomeController {
 		}
 		
 				
-	
+
 	@GetMapping(value="/map")
 	public String map() {
 		return "map";

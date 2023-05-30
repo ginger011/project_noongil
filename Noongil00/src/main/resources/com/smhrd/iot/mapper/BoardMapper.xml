@@ -8,6 +8,11 @@
 		select * from blockInfo
 	</select>
 	
+
+	<select id="breport" resultType="com.smhrd.iot.domain.Report">
+		select * from userReport
+	</select>
+
 	
 
 </mapper>
