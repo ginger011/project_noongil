@@ -57,3 +57,15 @@ for (var i = 0; i < spans.length; i++) {
 		span.style.color = "red";
 	}
 }
+
+const joinDiv = document.getElementsByClassName('join-div');
+
+const joinPtag = joinDiv[0].querySelectorAll('p');
+joinPtag.forEach((p) => {
+    if(p.textContent.includes('*')) {
+		// ('*')을 빨간색으로
+		let content = p.textContent.replace('*', '<span style="color: red">*</span>');
+		p.innerHTML = content
+    }
+});
+
