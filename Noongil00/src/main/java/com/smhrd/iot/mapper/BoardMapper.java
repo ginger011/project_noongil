@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.smhrd.iot.domain.Board;
 import com.smhrd.iot.domain.Report;
+import com.smhrd.iot.domain.autoReport;
 
 @Mapper
 public interface BoardMapper {
@@ -13,6 +14,8 @@ public interface BoardMapper {
 	public List<Board> board();
 	
 	public List<Report> breport();
+	
+	public List<autoReport> autoreport();
 
 
 	
