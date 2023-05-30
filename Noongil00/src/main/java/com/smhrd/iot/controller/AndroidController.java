@@ -8,18 +8,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.iot.domain.UserInfo;
+import com.smhrd.iot.service.AndroidService;
 import com.smhrd.iot.service.UserService;
 
 
 @RestController
 @RequestMapping("/android")
 public class AndroidController {
+	@Autowired
+	private AndroidService service;
 	
 	@RequestMapping(value="/androidApp")
 	public String createAppMember(@RequestBody String a) {
-		System.out.println(a);
-		System.out.println("받아짐");
 		
+		System.out.println(a);
+//		System.out.println(a.getUserID());
+//		System.out.println(a.getUserPW());
+//		System.out.println(a.getUserName());
+//		System.out.println(a.getUserBirth());
+//		System.out.println(a.getUserAddress());
+//		System.out.println(a.getUserTel());
+//		System.out.println(a.getCaneId());
+		
+		System.out.println("받아짐");
+//		service.joinAndroid(a);
 		return null;
 	}
 	

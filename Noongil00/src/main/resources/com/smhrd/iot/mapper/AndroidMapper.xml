@@ -1,0 +1,11 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.iot.mapper.AndroidMapper">mapper interface의 경로와 동일
+	<insert id="userAndroidJoin" parameterType="com.smhrd.iot.domain.userinfo">
+		insert into userInfo (userID, userPW, userName, userAddress, userTel, userBirth, caneID) 
+		values (#{userID},#{userPW},#{userName},#{userAddress},#{userTel},#{userBirth},#{caneID})
+	</insert>
+	
+	
+
+</mapper> -->
