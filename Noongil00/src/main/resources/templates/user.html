@@ -48,7 +48,7 @@
 
         <div class="main-body">
             <div class="main-login">
-                <span><span th:text="${session.managerID}" />님 환영합니다</span>
+				<span><span id=loginText>로그인 해주세요 </span></span>
                 <button class="btn-login">로그인</button>
             </div>
             <div class="search">
@@ -136,7 +136,7 @@
                         lock
                     </span>
                 </div>
-                <button type="submit">LOGIN</button>
+                <button type="submit" id="loginCheck" onclick="loginStore()">LOGIN</button>
                 <a href="#">
                     비밀번호를 잊으셨나요?
                 </a>
