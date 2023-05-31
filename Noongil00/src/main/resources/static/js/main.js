@@ -26,8 +26,6 @@ document.querySelector('.btn-login').addEventListener('click', function (event) 
 		// 로그인 버튼의 글씨가 로그아웃일 때 실행 될 것들
 	}
 
-
-
 });
 
 document.querySelector('.login').addEventListener('click', function (event) {
@@ -47,9 +45,6 @@ if (divLoginSpan.includes('환영합니다')) {
 	btnLogin.style.color = 'white';
 	btnLogin.textContent = '로그아웃';
 }
-
-
-
 
 // span 태그들을 선택합니다.
 var spans = document.getElementsByTagName("span");
@@ -76,23 +71,4 @@ joinPtag.forEach((p) => {
 	}
 });
 
-// settings 클래스를 가진 span 요소들을 선택합니다.
-// let settings = document.getElementsByClassName('settings-link')[0].querySelector('span');
-
-// // span 요소를 클릭했을 때 이벤트 핸들러를 등록합니다.
-// settings.addEventListener('click', function () {
-// 	// 클릭된 span 요소의 부모 요소인 <a> 요소를 찾습니다.
-// 	let parentLink = this.parentNode;
-// 	console.log("a태그", parentLink);
-// 	// <a> 요소의 부모 요소인 <td> 요소를 찾습니다.
-// 	let parentTd = parentLink.parentNode;
-// 	console.log("td태그", parentTd);
-// 	// <td> 요소의 부모 요소인 <tr> 요소를 찾습니다.
-// 	let parentTr = parentTd.parentNode;
-// 	console.log("parentTr태그", parentTr);
-// 	// <th> 요소의 자식 요소인 <span> 요소를 찾습니다.
-// 	let span = parentTr.querySelector('span');
-// 	console.log("span태그", span);
-// 	// 텍스트를 변경합니다.
-// });
 
