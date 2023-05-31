@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -17,7 +19,7 @@ public class jsonService {
 		System.out.println(j);
 		
 		// .json 파일 경로
-        String filePath = "src/main/resources/com/smhrd/iot/json/getJson.json";
+        String filePath = "src/main/resources/com/smhrd/iot/json/getjson.json";
         System.out.println("pathing 완료");
         // 새로운 JSON 데이터
         String newJsonData = j;
@@ -33,7 +35,8 @@ public class jsonService {
             
             // 수정된 JSON 데이터를 .json 파일에 저장
             objectMapper.writeValue(new File(filePath), jsonNode);
-            System.out.println("data.json 파일이 수정되었습니다.");
+            System.out.println("json.json 파일이 수정되었습니다.");
+
         } catch (IOException e) {
             e.printStackTrace();
         }

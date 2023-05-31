@@ -38,10 +38,11 @@ public class jsonController {
 		return service.getJson(j);
 	}
 	
-	@GetMapping("/requestJson")
+	
+	@GetMapping("/requestjson")
 	public ResponseEntity<String> getData() throws IOException {
         // .json 파일 경로
-        String filePath = "src/main/resources/com/smhrd/iot/json/getJson.json";
+        String filePath = "com/smhrd/iot/json/getjson.json";
 
         // .json 파일을 문자열로 읽기
         ClassPathResource resource = new ClassPathResource(filePath);
@@ -54,6 +55,9 @@ public class jsonController {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(jsonData);
     }
+	
+	
+	
 	
 //	@RequestMapping("/json")
 //	//json으로 넣기위해서 @RequestBody으로 파싱한다
