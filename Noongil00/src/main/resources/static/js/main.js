@@ -122,8 +122,7 @@ var logoutAjax = function() {
         success: function(response) {
           // 로그아웃 성공 시 수행할 동작
           console.log('로그아웃 성공');
-          location.reload();
-          // 여기서 필요한 경우 추가 동작 수행 가능
+          location.reload(); // 페이지 새로고침
         },
         error: function(xhr, status, error) {
           // 로그아웃 실패 또는 오류 시 수행할 동작
