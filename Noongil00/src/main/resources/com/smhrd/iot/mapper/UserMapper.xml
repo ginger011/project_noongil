@@ -12,9 +12,15 @@
 	</select>
 	
 	<!-- 사용자 추가하기 -->
-	<!--
-	<insert id="">
-		insert into userInfo() values()
+	<insert id="userInsert" parameterType="com.smhrd.iot.domain.UserInfo">
+		insert into userInfo(userID, userPW, caneId, userName, userAddress, userTel, userBirth) 
+		values(#{userID}, #{userPW}, #{caneId}, #{userName}, #{userAddress}, #{userTel}, #{userBirth})
 	</insert>
-	-->
+	
+	<!-- 사용자 정보 수정 -->
+	<update id="userUpdate" parameterType="com.smhrd.iot.domain.UserInfo">
+		update userInfo set userPW=#{userPW}, caneId=#{caneId}, caneId=#{caneId}, 
+		userName=#{userName}, userAddress=#{userAddress}, userTel=#{userTel}, userBirth=#{userBirth}
+		where userID=#{userID}
+	</update>
 </mapper>

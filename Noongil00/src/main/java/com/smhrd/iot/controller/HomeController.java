@@ -65,13 +65,19 @@ public class HomeController {
 			System.out.println("성공: " + result);
 			// 세션에 ID 저장
 			session.setAttribute("managerID", managerID);
-			session.setAttribute("managerPW", managerPW);
 			
-			return "index"; // redirect..?
+			return "redirect:/"; 
 		}else { // 로그인 실패
 			System.out.println("실패: " + result);
 			return "index";
 		}
+	}
+	
+	// 관리자 로그아웃
+	@PostMapping(value="/web_user/logout")
+	public String managerlogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 	
 
