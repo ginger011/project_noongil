@@ -32,13 +32,13 @@
                     <a href="/noongil/"><span>메인페이지</span></a>
                 </li>
                 <li id="move-jumja">
-                    <a href="/noongil/map"><span>점자블록</span></a>
+                    <a href="#" onclick="toMap()"><span>점자블록</span></a>
                 </li>
                 <li id="move-error">
-                    <a href="/noongil/userReport"><span>고장신고</span></a>
+                    <a href="#" onclick="userReport()"><span>고장신고</span></a>
                 </li>
                 <li id="move-memInfo">
-                    <a href="/noongil/user"><span>회원정보</span></a>
+                    <a href="#" onclick="user()"><span>회원정보</span></a>
                 </li>
                 <!-- <li id="move-report">
 					<a href="#"><span>자동알림</span></a>
@@ -48,7 +48,7 @@
 
         <div class="main-body">
             <div class="main-login">
-
+				<span><span id=loginText>로그인 해주세요 </span></span>
                 <button class="btn-login">로그인</button>
             </div>
             <div class="search">
@@ -138,7 +138,7 @@
                         lock
                     </span>
                 </div>
-                <button type="submit">LOGIN</button>
+                <button type="submit" id="loginCheck" onclick="loginStore()">LOGIN</button>
                 <a href="#">
                     비밀번호를 잊으셨나요?
                 </a>

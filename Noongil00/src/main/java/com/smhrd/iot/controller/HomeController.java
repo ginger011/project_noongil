@@ -65,8 +65,9 @@ public class HomeController {
 			System.out.println("성공: " + result);
 			// 세션에 ID 저장
 			session.setAttribute("managerID", managerID);
+			session.setAttribute("managerPW", managerPW);
 			
-			return "index";
+			return "index"; // redirect..?
 		}else { // 로그인 실패
 			System.out.println("실패: " + result);
 			return "index";

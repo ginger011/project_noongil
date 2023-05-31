@@ -99,5 +99,46 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 			}
 			
 			
-			
+		// 로그인 - 세션 사용하기
+// document.getElementById("input 태그의 id값")
+let id = document.getElementById("managerID")
+let pw = document.getElementById("managerPW")
+
+
+// 로그인 버튼 클릭하면 세션에 저장
+function loginStore(){	
+	sessionStorage.setItem("managerID", id.value);
+	sessionStorage.setItem("managerPW", pw.value);
+}
+
+// 세션 존재 시에만 점자블록 이동
+function toMap() { // 로그인 O	
+	if(sessionStorage.getItem('managerID') != null){				
+		alert(sessionStorage.getItem('managerID'));
+		location.href="/noongil/map"; 
+	}else{ // 로그인 X
+		// '점자블록' 클릭했을 때 로그인 창 보이게
+		document.querySelector('.login-overlay').style.display = 'flex';
+	}
+}
+
+// 세션 존재 시에만 고장신고
+function userReport(){
+	if(sessionStorage.getItem('managerID') != null){				
+		alert(sessionStorage.getItem('managerID'));
+		location.href="/noongil/userReport";
+	}else{
+		document.querySelector('.login-overlay').style.display = 'flex';			
+	}
+}
+
+// 세션 존재 시에만 회원정보
+function user(){
+	if(sessionStorage.getItem('managerID') != null){				
+		alert(sessionStorage.getItem('managerID'));
+		location.href="/noongil/user";
+	}else{
+		document.querySelector('.login-overlay').style.display = 'flex';			
+	}
+}	
 
