@@ -25,15 +25,12 @@ document.querySelector('.btn-login').addEventListener('click', function (event) 
 		
 	} else if (btnLogin.textContent === '로그아웃'){
 		// 로그인 버튼의 글씨가 로그아웃일 때 실행 될 것들
+		console.log('왜그래')
 		sessionStorage.removeItem("managerID");
 	    sessionStorage.removeItem("managerPW");
-	    
-	    btnLogin.style.backgroundColor = ''; // 이전에 설정된 스타일 제거
-	    btnLogin.style.color = ''; // 이전에 설정된 스타일 제거
-	    btnLogin.textContent = '로그인';	    
-	    // location.reload(); // 페이지 새로고침
+	    logoutAjax()
 	}
-
+	console.log(btnLogin.textContent);
 });
 
 document.querySelector('.login').addEventListener('click', function (event) {
@@ -53,6 +50,7 @@ if (divLoginSpan.includes('환영합니다')) {
 	btnLogin.style.color = 'white';
 	btnLogin.textContent = '로그아웃';	
 }
+
 
 
 // span 태그들을 선택합니다.
@@ -80,6 +78,25 @@ joinPtag.forEach((p) => {
 	}
 });
 
+// settings 클래스를 가진 span 요소들을 선택합니다.
+// let settings = document.getElementsByClassName('settings-link')[0].querySelector('span');
+
+// // span 요소를 클릭했을 때 이벤트 핸들러를 등록합니다.
+// settings.addEventListener('click', function () {
+// 	// 클릭된 span 요소의 부모 요소인 <a> 요소를 찾습니다.
+// 	let parentLink = this.parentNode;
+// 	console.log("a태그", parentLink);
+// 	// <a> 요소의 부모 요소인 <td> 요소를 찾습니다.
+// 	let parentTd = parentLink.parentNode;
+// 	console.log("td태그", parentTd);
+// 	// <td> 요소의 부모 요소인 <tr> 요소를 찾습니다.
+// 	let parentTr = parentTd.parentNode;
+// 	console.log("parentTr태그", parentTr);
+// 	// <th> 요소의 자식 요소인 <span> 요소를 찾습니다.
+// 	let span = parentTr.querySelector('span');
+// 	console.log("span태그", span);
+// 	// 텍스트를 변경합니다.
+// });
 
 // 로그인 - 세션 사용하기
 // document.getElementById("input 태그의 id값")
@@ -93,24 +110,29 @@ function loginStore(){
 	sessionStorage.setItem("managerPW", pw.value);
 }
 
-function logout() {
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/web_user/logout', true);  // 로그아웃 요청을 보낼 URL을 적절히 변경해야 합니다.
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.onload = function() {
-    if (xhr.status === 200) {
-      // 로그아웃 성공
-      sessionStorage.removeItem("managerID");
-      sessionStorage.removeItem("managerPW");
-      console.log('로그아웃되었습니다.');
-      // 페이지 새로고침 등 로그아웃 이후에 수행할 동작을 여기에 추가할 수 있습니다.
-    } else {
-      // 로그아웃 실패
-      console.error('로그아웃에 실패했습니다.');
-    }
-  };
-  xhr.send();
-}
+// 로그아웃
+var logoutAjax = function() {
+	console.log('ㅎ')
+  $(document).ready(function() {
+    // 로그아웃 버튼 클릭 시 AJAX 요청 전송
+		console.log('왜안돼')
+      $.ajax({
+        url: 'web_user/logout',  // 로그아웃을 처리하는 서버 엔드포인트 URL
+        type: 'POST',    // 요청 메소드 (POST, GET 등)
+        success: function(response) {
+          // 로그아웃 성공 시 수행할 동작
+          console.log('로그아웃 성공');
+          location.reload(); // 페이지 새로고침
+        },
+        error: function(xhr, status, error) {
+          // 로그아웃 실패 또는 오류 시 수행할 동작
+          console.error('로그아웃 오류:', error);
+          // 여기서 필요한 경우 오류 처리 또는 추가 동작 수행 가능
+        }
+      });
+  });
+};
+
 
 // 세션 존재 시에만 점자블록 이동
 function toMap() { // 로그인 O	
