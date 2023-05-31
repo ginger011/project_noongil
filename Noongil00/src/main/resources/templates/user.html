@@ -84,7 +84,7 @@
                     </thead>
                     <tbody>
                         <tr th:each="UserInfo:${list}">
-                            <th scope="row"><span th:text="${UserInfo.userID}"></span></th>
+                            <td><span th:text="${UserInfo.userID}"></span></td>
                             <td><span th:text="${UserInfo.userName}"></span></td>
                             <td><span th:text="${UserInfo.userBirth}"></td>
                             <td><span th:text="${UserInfo.userTel}"></td>
@@ -93,8 +93,6 @@
                                         settings
                                     </span></a></td>
                         </tr>
-
-
                     </tbody>
                 </table>
 
@@ -147,8 +145,38 @@
     </div>
     <!-- 로그인 창 끝 -->
     <!-- 연습 -->
-
+    <div class="change-overlay">
+        <div class="login change">
+            <p>회원정보 수정</p>
+            <form class="login-form change-form">
+                <div class="textbox">
+                    <input type="text" value="" id="userName" class="input-readonly" />
+                </div>
+                <div class="textbox">
+                    <input type="text" value="" id="userBirth" class="input-readonly" />
+                </div>
+                <div class="textbox">
+                    <input type="text" value="" id="userTel" />
+                </div>
+                <div class="textbox">
+                    <input type="text" value="" id="userAddress" />
+                </div>
+    
+                <button type="submit">저장하기</button>
+                <button style="background-color: rgba(255, 83, 83, 1);">취소</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        
+    </script>
+    
+    
+    
+    
     <script src="./js/main.js"></script>
+    <script src="./js/user.js"></script>
 </body>
 
 </html>
