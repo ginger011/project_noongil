@@ -12,3 +12,4 @@ public class UserAndroidInfo {
 		private String userID;
 		private String userPW;
 }
+
