@@ -7,10 +7,17 @@
 		values (#{userID},#{userPW},#{userName},#{userAddress},#{userTel},#{userBirth},#{caneId})
 </insert>
 
+<insert id="userAppReport" parameterType="com.smhrd.iot.domain.Report">
+	insert into userReport (userId, userReportPlace, userReportContent,userReportState) values 
+	(#{userID},#{userReportPlace},#{userReportContent},#{userReportState})
+</insert>
+
 <select id="userAndroidLogin" parameterType="com.smhrd.iot.domain.UserInfo" resultType="int">
     SELECT CASE WHEN EXISTS (
         SELECT 1 FROM userInfo WHERE userID=#{userID} AND userPW=#{userPW}
     ) THEN 1 ELSE 0 END
 </select>
+
+
 
 </mapper>

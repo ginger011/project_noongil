@@ -211,12 +211,12 @@
 }
 
 .login-form input {
-    width: 78%;
+    width: 90%;
     background: transparent;
     border: 2px solid rgba(0, 0, 0, 0.1);
     font-size: 18px;
     color: inherit;
-    padding-left: 40px;
+    padding-left: 50px;
     padding-right: -40px;
 }
 
@@ -510,7 +510,27 @@
     margin-bottom: 50px;
 }
 
+.input-readonly {
+    background-color: #e5e5e5;
+    pointer-events: none;
+}
 
+
+
+.change-form input {
+    padding-left: 5px;
+    
+}
+
+.change-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.change {
+    display: none;
+    position: absolute;
+}
 
 
 
