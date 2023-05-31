@@ -12,12 +12,31 @@
 	(#{userID},#{userReportPlace},#{userReportContent},#{userReportState})
 </insert>
 
+<insert id="androidBlindCall" parameterType="com.smhrd.iot.domain.BlindCall">
+	insert into blindCall (userId, blindCallDestination, blindCallDate) values 
+	(#{userId},#{blindCallDestination}, #{blindCallDate})
+</insert>
+
 <select id="userAndroidLogin" parameterType="com.smhrd.iot.domain.UserInfo" resultType="int">
     SELECT CASE WHEN EXISTS (
         SELECT 1 FROM userInfo WHERE userID=#{userID} AND userPW=#{userPW}
     ) THEN 1 ELSE 0 END
 </select>
 
+<select id="getUserInfoByUserId" parameterType="String" resultType="com.smhrd.iot.domain.UserInfo">
+    SELECT * FROM userInfo WHERE userID = #{userId}
+</select>
 
+<!-- 회원 정보 수정 -->
+<update id="updateUserInfo" parameterType="com.smhrd.iot.domain.UserInfo">
+    UPDATE userInfo SET
+    userPW = #{userPW},
+    userName = #{userName},
+    userAddress = #{userAddress},
+    userTel = #{userTel},
+    userBirth = #{userBirth},
+    caneId = #{caneId}
+    WHERE userID = #{userID}
+</update>
 
 </mapper>
