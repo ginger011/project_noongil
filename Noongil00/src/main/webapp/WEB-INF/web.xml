@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session-config>
+    <session-timeout>30</session-timeout> <!-- 세션 유지 시간 (분) -->
+    <cookie-config>
+        <name>SESSIONID</name> <!-- 세션 쿠키 이름 -->
+        <http-only>true</http-only> <!-- JavaScript에서 접근 불가능한 설정 -->
+    </cookie-config>
+</session-config>
