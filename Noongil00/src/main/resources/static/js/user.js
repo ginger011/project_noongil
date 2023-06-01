@@ -1,4 +1,11 @@
 var settingsLinks = document.getElementsByClassName('settings-link');
+        var userInfo = {
+            userID: '',
+            userName: '',
+            userBirth: '',
+            userTel: '',
+            userAddress: ''
+        };
 
 for (var i = 0; i < settingsLinks.length; i++) {
     settingsLinks[i].addEventListener('click', function (event) {
@@ -7,13 +14,6 @@ for (var i = 0; i < settingsLinks.length; i++) {
         var tr = this.closest('tr');
         var tds = tr.querySelectorAll('td');
 
-        var userInfo = {
-            userID: '',
-            userName: '',
-            userBirth: '',
-            userTel: '',
-            userAddress: ''
-        };
 
         for (var j = 0; j < tds.length; j++) {
             var td = tds[j];
@@ -57,3 +57,12 @@ document.querySelector('.change button:last-child').addEventListener('click', fu
     var loginDiv = document.querySelector('.change');
     loginDiv.style.display = 'none';
 });
+
+// 정보 수정
+function changeSave(userInfo){
+var userID = userInfo['userID']; // 실제로는 동적으로 userID 값을 설정해야 합니다.
+var form = document.getElementById("userUpdateForm");
+console.log('userID')
+form.action = "user/update/" + userID;
+
+}
