@@ -14,5 +14,12 @@ public class UserInfo {
 	private String userName;
 	private String userAddress;
 	private String userTel;
-	private String userBirth;	
+	private String userBirth;
+	@Override
+	public String toString() {
+		return "UserInfo [userID=" + userID + ", userPW=" + userPW + ", caneId=" + caneId + ", userName=" + userName
+				+ ", userAddress=" + userAddress + ", userTel=" + userTel + ", userBirth=" + userBirth + "]";
+	}
+	
+	
 }

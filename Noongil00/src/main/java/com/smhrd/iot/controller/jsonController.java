@@ -1,9 +1,16 @@
 package com.smhrd.iot.controller;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +37,27 @@ public class jsonController {
 //		System.out.println(j.getGreenLightTime());
 		return service.getJson(j);
 	}
+	
+	
+	@GetMapping("/requestjson")
+	public ResponseEntity<String> getData() throws IOException {
+        // .json 파일 경로
+        String filePath = "com/smhrd/iot/json/getjson.json";
+
+        // .json 파일을 문자열로 읽기
+        ClassPathResource resource = new ClassPathResource(filePath);
+        Path path = resource.getFile().toPath();
+        String jsonData = Files.readString(path, StandardCharsets.UTF_8);
+
+        // JSON 데이터 반환
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(jsonData);
+    }
+	
+	
+	
 	
 //	@RequestMapping("/json")
 //	//json으로 넣기위해서 @RequestBody으로 파싱한다
