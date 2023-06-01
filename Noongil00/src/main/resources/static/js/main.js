@@ -25,12 +25,12 @@ document.querySelector('.btn-login').addEventListener('click', function (event) 
 		
 	} else if (btnLogin.textContent === '로그아웃'){
 		// 로그인 버튼의 글씨가 로그아웃일 때 실행 될 것들
-		console.log('왜그래')
+		console.log('로그아웃 버튼 클릭')
 		sessionStorage.removeItem("managerID");
 	    sessionStorage.removeItem("managerPW");
+	    console.log('세션 삭제 완료')
 	    logoutAjax()
 	}
-	console.log(btnLogin.textContent);
 });
 
 document.querySelector('.login').addEventListener('click', function (event) {
@@ -112,10 +112,9 @@ function loginStore(){
 
 // 로그아웃
 var logoutAjax = function() {
-	console.log('ㅎ')
   $(document).ready(function() {
     // 로그아웃 버튼 클릭 시 AJAX 요청 전송
-		console.log('왜안돼')
+		console.log('로그아웃 시 실행되는 함수')
       $.ajax({
         url: 'web_user/logout',  // 로그아웃을 처리하는 서버 엔드포인트 URL
         type: 'POST',    // 요청 메소드 (POST, GET 등)
