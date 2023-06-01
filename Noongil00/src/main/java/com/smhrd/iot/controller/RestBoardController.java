@@ -4,6 +4,8 @@ package com.smhrd.iot.controller;
 
 import java.util.List;
 
+import javax.servlet.annotation.WebServlet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,4 +57,9 @@ public class RestBoardController {
 		System.out.println("뭔데 이게3"+AutoService.autoList());
 		return AutoService.autoList();
 	}
+	@GetMapping("api/thermic/")
+	public String thermic() {
+		return service.thermic();
+	}
 }
+
