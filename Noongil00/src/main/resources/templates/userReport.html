@@ -57,10 +57,21 @@
         </nav>
 
         <div class="main-body">
+        <th:block th:if="${session.managerID == null}">
             <div class="main-login">
                 <span>로그인 해주세요 </span>
                 <button class="btn-login">로그인</button>
             </div>
+        </th:block>
+			
+			<th:block th:if="${session.managerID != null}" th:object="${session}">
+				<div class="main-login">
+				
+					<span th:text="${session.managerID} + '님 환영합니다.'"></span>
+					<button class="btn-login">로그인</button>
+				</div>
+			</th:block>     
+            
             <div class="search">
                 <select name="" id="">
                     <option value="default" selected>전체</option>

@@ -17,10 +17,8 @@
 		values(#{userID}, #{userPW}, #{caneId}, #{userName}, #{userAddress}, #{userTel}, #{userBirth})
 	</insert>
 	
-	<!-- 사용자 정보 수정 -->
+	<!-- 사용자 정보 수정 : 전화번호, 주소만 수정 가능 -->
 	<update id="userUpdate" parameterType="com.smhrd.iot.domain.UserInfo">
-		update userInfo set userPW=#{userPW}, caneId=#{caneId}, caneId=#{caneId}, 
-		userName=#{userName}, userAddress=#{userAddress}, userTel=#{userTel}, userBirth=#{userBirth}
-		where userID=#{userID}
+		update userInfo set userAddress=#{userAddress}, userTel=#{userTel} where userID=#{userID}
 	</update>
 </mapper>

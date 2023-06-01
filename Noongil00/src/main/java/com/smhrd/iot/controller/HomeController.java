@@ -13,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.smhrd.iot.domain.UserInfo;
 import com.smhrd.iot.service.ManagerService;
 import com.smhrd.iot.service.UserService;
@@ -90,7 +93,19 @@ public class HomeController {
 		session.setAttribute("userInfo", userInfo);
 		return "user";
 	}
-		
+	
+	// 사용자 정보 수정하기
+		@PostMapping("user/update/{userID}")
+		public String userUpdate(@PathVariable("userID") String userID,  @RequestParam("userTel") String userTel, @RequestParam("userAddress") String userAddress) {
+			System.out.println("전화번호: " + userTel + "주소" + userAddress);
+			UserInfo userInfo = new UserInfo();
+			userInfo.setUserID(userID);
+			userInfo.setUserTel(userTel);
+			userInfo.setUserAddress(userAddress);
+			serviceUser.userUpdate(userInfo);
+			return "redirect:/user";
+		}
+	
 
 	@GetMapping(value="/map")
 	public String map() {
