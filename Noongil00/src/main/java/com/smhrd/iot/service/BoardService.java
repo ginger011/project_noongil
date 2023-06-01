@@ -23,6 +23,9 @@ public class BoardService {
 		
 	}
 	
+	public String thermic() {
+		return null;
+	}
 
 //	public List<Board> board(){
 //		return mapper.board();
