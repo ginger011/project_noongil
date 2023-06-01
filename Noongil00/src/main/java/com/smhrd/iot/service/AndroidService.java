@@ -38,9 +38,11 @@ public class AndroidService {
         return mapper.getUserInfoByUserId(userId);
     }
 
+
     // 회원 정보 수정
-    public void updateUserInfo(UserInfo updatedUserInfo) {
-        mapper.updateUserInfo(updatedUserInfo);
+    public void updateUserInfo(UserInfo updateUserInfo) {
+        mapper.updateUserInfo(updateUserInfo);
+ 
     }
 
     // 로그인

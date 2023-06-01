@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.iot.domain.BlindCall;
@@ -46,23 +47,34 @@ public class AndroidController {
 	}
 	
 	  // 회원 정보 조회
-    @GetMapping("/{userId}")
-    public ResponseEntity<UserInfo> getUserInfo(@PathVariable("userId") String userId) {
-        UserInfo userInfo = service.getUserInfoByUserId(userId);
-        if (userInfo != null) {
-            return ResponseEntity.ok(userInfo);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-    }
+	@GetMapping("/{userId}")
+	public UserInfo getUserInfo(@PathVariable("userId") String userId) {
+	    UserInfo userInfo = service.getUserInfoByUserId(userId);
+	    if (userInfo != null) {
+	    	System.out.println("요청들어옴");
+	    	
+	    	System.out.println(userInfo.toString());
+//	        return ResponseEntity.ok(userInfo);
+	    	return userInfo;
+	    } else {
+	    	System.out.println("요청 안들어옴");
+//	        return ResponseEntity.notFound().build();
+	    	return null;
+	    }
+	}
 
-    // 회원 정보 수정
-    @PostMapping("/update")
-    public ResponseEntity<String> updateUserInfo(@RequestBody UserInfo updatedUserInfo) {
-        // 회원 정보 수정 로직 수행
-        service.updateUserInfo(updatedUserInfo);
-        return ResponseEntity.ok("회원 정보 수정 완료");
-    }
+	@PostMapping("/update/{userId}")
+	@ResponseStatus(HttpStatus.OK)
+	public UserInfo updateUserInfo(@PathVariable String userId, @RequestBody UserInfo updatedUserInfo) {
+	    System.out.println(updatedUserInfo.toString());
+	    // 회원 정보 수정 로직 수행
+	    service.updateUserInfo(updatedUserInfo);
+
+	    // 응답 보내기
+	    return updatedUserInfo;
+	}
+
+
     
 	//고장신고 페이지
 	@RequestMapping(value="/appReport")
@@ -92,10 +104,8 @@ public class AndroidController {
 	    UserAndroidInfo result = service.userAndroidLogin(userInfoLogin);
 	    if (result != null) { // 로그인 성공
 	        System.out.println("성공: " + result);
-
 	        // 로그인 성공한 경우 세션에 사용자 정보 저장
 	        session.setAttribute("userID", userInfoLogin.getUserID());
-
 	        return "{\"status\": \"success\"}";
 	    } else { // 로그인 실패
 	        System.out.println("실패: " + result);
