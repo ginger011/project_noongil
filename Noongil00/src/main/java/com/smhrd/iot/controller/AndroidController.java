@@ -48,7 +48,7 @@ public class AndroidController {
 	}
 	
 	  // 회원 정보 조회
-	@GetMapping("/{userId}")
+	@GetMapping(value = "/{userId}", produces = "application/json;charset=UTF-8")
 	public UserInfo getUserInfo(@PathVariable("userId") String userId) {
 	    UserInfo userInfo = service.getUserInfoByUserId(userId);
 	    if (userInfo != null) {
