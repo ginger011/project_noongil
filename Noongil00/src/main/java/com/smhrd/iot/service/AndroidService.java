@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.smhrd.iot.domain.BlindCall;
 import com.smhrd.iot.domain.Report;
+import com.smhrd.iot.domain.ReportNonUser;
 import com.smhrd.iot.domain.UserAndroidInfo;
 import com.smhrd.iot.domain.UserInfo;
 import com.smhrd.iot.mapper.AndroidMapper;
@@ -26,6 +27,12 @@ public class AndroidService {
         mapper.userAppReport(report);
         return report;
     }
+    
+    // 비회원 신고
+    public ReportNonUser userNonUserAppReport(ReportNonUser report) {
+        mapper.userNonUserAppReport(report);
+        return report;
+    }
 
     // 세빛콜
     public BlindCall androidBlindCall(BlindCall bc) {
@@ -42,7 +49,6 @@ public class AndroidService {
     // 회원 정보 수정
     public void updateUserInfo(UserInfo updateUserInfo) {
         mapper.updateUserInfo(updateUserInfo);
- 
     }
 
     // 로그인

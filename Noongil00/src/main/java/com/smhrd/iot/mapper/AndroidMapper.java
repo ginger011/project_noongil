@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.smhrd.iot.domain.BlindCall;
 import com.smhrd.iot.domain.Report;
+import com.smhrd.iot.domain.ReportNonUser;
 import com.smhrd.iot.domain.UserAndroidInfo;
 import com.smhrd.iot.domain.UserInfo;
 
@@ -13,6 +14,7 @@ public interface AndroidMapper {
 		public String userAndroidJoin(UserInfo uInfo);
 		public int userAndroidLogin(UserAndroidInfo userInfoLogin);
 		public void userAppReport(Report report);
+		public void userNonUserAppReport(ReportNonUser report);
 		public void androidBlindCall(BlindCall bc);
 	    // 회원 정보 조회
 	    public UserInfo getUserInfoByUserId(@Param("userId") String userId);

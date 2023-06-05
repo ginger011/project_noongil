@@ -49,15 +49,20 @@
 		
 
 		<div class="main-body">
+		<th:block th:if="${session.managerID == null}">
 			<div class="main-login">
 				<span>로그인 해주세요 </span>
 				<button class="btn-login">로그인</button>
 			</div>
-			<!-- <div class="main-threebox">
-				<div id="threebox-1">1번박스</div>
-				<div id="threebox-2">2번박스</div>
-				<div id="threebox-3">3번박스</div>
-			</div> -->
+			</th:block>
+			
+			<th:block th:if="${session.managerID != null}" th:object="${session}">
+				<div class="main-login">
+				
+					<span th:text="${session.managerID} + '님 환영합니다.'"></span>
+					<button class="btn-login">로그인</button>
+				</div>
+			</th:block>    
 			<div class="map-box">
 				<div id="map"></div>
 			</div>

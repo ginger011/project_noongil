@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.smhrd.iot.domain.BlindCall;
 import com.smhrd.iot.domain.Report;
+import com.smhrd.iot.domain.ReportNonUser;
 import com.smhrd.iot.domain.StatusResponse;
 import com.smhrd.iot.domain.UserAndroidInfo;
 import com.smhrd.iot.domain.UserInfo;
@@ -47,7 +48,7 @@ public class AndroidController {
 	}
 	
 	  // 회원 정보 조회
-	@GetMapping("/{userId}")
+	@GetMapping(value = "/{userId}", produces = "application/json;charset=UTF-8")
 	public UserInfo getUserInfo(@PathVariable("userId") String userId) {
 	    UserInfo userInfo = service.getUserInfoByUserId(userId);
 	    if (userInfo != null) {
@@ -85,6 +86,16 @@ public class AndroidController {
 	System.out.println(report.getUserReportState());
 	service.userAppReport(report);
 	}
+	
+	//비회원고장신고 페이지
+		@RequestMapping(value="/appReport/nonUser")
+		public void userNonUserAppReport(@RequestBody ReportNonUser report){
+		System.out.println(report.getNonUserID());
+		System.out.println(report.getNonUserReportContent());
+		System.out.println(report.getNonUserReportPlace());
+		System.out.println(report.getNonUserReportState());
+		service.userNonUserAppReport(report);
+		}
 	
 	//세빛콜
 	@RequestMapping(value="/blindCall")

@@ -12,6 +12,11 @@
 	(#{userID},#{userReportPlace},#{userReportContent},#{userReportState})
 </insert>
 
+<insert id="userNonUserAppReport" parameterType="com.smhrd.iot.domain.Report">
+	insert into nonUserReport (nonUserID, nonUserReportPlace, nonUserReportContent,nonUserReportState) values 
+	(#{nonUserID},#{nonUserReportPlace},#{nonUserReportContent},#{nonUserReportState})
+</insert>
+
 <insert id="androidBlindCall" parameterType="com.smhrd.iot.domain.BlindCall">
 	insert into blindCall (userId, blindCallDestination, blindCallDate) values 
 	(#{userId},#{blindCallDestination}, #{blindCallDate})
