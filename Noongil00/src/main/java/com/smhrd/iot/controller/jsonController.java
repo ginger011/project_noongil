@@ -25,6 +25,7 @@ import com.smhrd.iot.service.jsonService;
 @RestController
 @RequestMapping("/json")
 public class jsonController {
+	String j;
 	
 	@Autowired
 	private jsonService service;
@@ -35,27 +36,35 @@ public class jsonController {
 		System.out.println("컨트롤러에 들어옴!");
 		System.out.println(j);
 //		System.out.println(j.getGreenLightTime());
-		return service.getJson(j);
+		this.j = j;
+		//최종에 jsonService삭제 예정
+		return null;
 	}
 	
+	//.json파일 리턴하는 코드
+//	@GetMapping("/requestjson")
+//	public ResponseEntity<String> getData() throws IOException {
+//        // .json 파일 경로
+//        String filePath = "com/smhrd/iot/json/getjson.json";
+//
+//        // .json 파일을 문자열로 읽기
+//        ClassPathResource resource = new ClassPathResource(filePath);
+//        Path path = resource.getFile().toPath();
+//        String jsonData = Files.readString(path, StandardCharsets.UTF_8);
+//
+//        // JSON 데이터 반환
+//        return ResponseEntity
+//                .ok()
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .body(j);
+//    }
 	
-	@GetMapping("/requestjson")
-	public ResponseEntity<String> getData() throws IOException {
-        // .json 파일 경로
-        String filePath = "com/smhrd/iot/json/getjson.json";
-
-        // .json 파일을 문자열로 읽기
-        ClassPathResource resource = new ClassPathResource(filePath);
-        Path path = resource.getFile().toPath();
-        String jsonData = Files.readString(path, StandardCharsets.UTF_8);
-
-        // JSON 데이터 반환
-        return ResponseEntity
-                .ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(jsonData);
+	
+	@GetMapping("/requestjson")  // 요청을 받을 URL
+    public String getJsonData() {
+        
+        return j;  // JSON 데이터 반환
     }
-	
 	
 	
 	
