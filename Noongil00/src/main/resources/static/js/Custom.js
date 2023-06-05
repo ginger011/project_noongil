@@ -1,4 +1,4 @@
-function handleClick() {
+function onClick() {
 	function thermic() {
 		$.ajax({
 			url: "api/thermic/",  //요청경로
