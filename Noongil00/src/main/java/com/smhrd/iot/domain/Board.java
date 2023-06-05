@@ -15,7 +15,7 @@ public class Board {
 	private String indate;
 	
 	private String blockID;
-	private String address;
+	private String blockAddress;
 	private String blockPlace;
 	private String blockXCoordinate;
 	private String blockYCoordinate;
