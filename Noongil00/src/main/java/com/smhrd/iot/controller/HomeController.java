@@ -115,7 +115,6 @@ public class HomeController {
 		@PostMapping("user/insert")
 		public String userInsert(UserInfo userInfo) {
 			System.out.println(userInfo);
-			
 			serviceUser.userInsert(userInfo);
 			return "redirect:/user";
 		}
