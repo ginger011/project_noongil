@@ -1,100 +1,109 @@
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new kakao.maps.LatLng(loadBoard["blockXcoordinate"],
-					loadBoard["blockYCoordinate"]), // 지도의 중심좌표
-			level : 4
-		// 지도의 확대 레벨
-		};
+loadBoard();
 
-		var map = new kakao.maps.Map(mapContainer, mapOption);
+var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png'; // 마커이미지의 주소입니다    
+var imageSize = new kakao.maps.Size(64, 69); // 마커이미지의 크기입니다
+var imageOption = {
+	offset: new kakao.maps.Point(27, 69) // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+};
 
-		var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
-		imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-		imageOption = {
-			offset : new kakao.maps.Point(27, 69)
-		}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
 
-		// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize,
-				imageOption)
-		var markerPosition = new kakao.maps.LatLng(
-				loadBoard["blockXcoordinate"], loadBoard["blockYCoordinate"]); // 마커가 표시될 위치입니다
-		console.log("마커포지션" + markerPosition.toString())
-		// 마커정보를 불러와 갯수를 추출
+// Json데이터가 담기는 boardData
+var boardData;
+// 여러개의 overlay를 담는 배열
+var customOverlay = [];
+// 여러개의 마커를 담는 배열
+var marker = [];
 
-		var result2 = [];
-		const result = Object.values(loadBoard)
-		const resultLength = Object.keys(loadBoard).length;
-		for (let i = 0; i < resultLength; i++) {
-			result2[i] = result[i];
+function loadBoard() {
+	$.ajax({
+		url: "api/board/",
+		type: "get",
+		dataType: "json",
+		success: function (data) {
+			boardData = data;
 
-		}
+			var mapContainer = document.getElementById('map');
+			var mapOption = {
+				center: new kakao.maps.LatLng(data[0].blockXCoordinate, data[0].blockYCoordinate),
+				level: 5
+			};
+			map = new kakao.maps.Map(mapContainer, mapOption);
 
-		// 마커를 생성합니다
-		var marker = new kakao.maps.Marker({
-			position : markerPosition,
-			image : markerImage
-		// 마커이미지 설정 
-		});
+			for (var i = 0; i < data.length; i++) {
+				console.log(data[i]);
+				var markerPosition = new kakao.maps.LatLng(data[i].blockXCoordinate, data[i].blockYCoordinate);
+				marker[i] = new kakao.maps.Marker({
+					map: map,
+					position: markerPosition,
+					title: data[i].title,
+					image: markerImage
+				});
 
-		// 마커가 지도 위에 표시되도록 설정합니다
-		marker.setMap(map);
+				var content = '<div class="customoverlay">' +
+					'  <a href="javascript:custom(\'' + i + '\')">' +
+					'    <span class="title">' + data[i].blockPlace + '</span>' +
+					'  </a>' +
+					'<p>' + data[i].blockID + '</p>' +
+					'<p>' + data[i].blockAddress + '</p>' +
+					'<div class="form-check form-switch">' +
+					'<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked' + i + '" checked>' +
+					'<label class="form-check-label" for="flexSwitchCheckChecked' + i + '">열선</label>' +
+					'</div>' +
+					'</div>';
 
-		// start
+				customOverlay[i] = new kakao.maps.CustomOverlay({
+					position: markerPosition,
+					content: content,
+					yAnchor: 1
+				});
+				customOverlay[i].setMap(map);
 
-		// 커스텀 오버레이가 표시될 위치입니다 
-		/* var position = new kakao.maps.LatLng(loadBoard["blockXcoordinate"],loadBoard["blockYCoordinate"]);  
+				// 스위치 버튼 요소 가져오기
+				var switchElement = document.getElementById('flexSwitchCheckChecked' + i);
 
+				// 스위치 버튼 변경 이벤트 리스너 추가
+				if (switchElement) {
+					switchElement.addEventListener('change', (function (index) {
+						return function () {
+							if (this.checked) {
+								// 스위치가 켜진 상태일 때의 동작
+								console.log('스위치 ' + index + '가 켜짐');
+								// 여기에 해당 스위치가 켜졌을 때 수행할 기능 추가
+								// 예: switchOnFunction(index);
+							} else {
+								// 스위치가 꺼진 상태일 때의 동작
+								console.log('스위치 ' + index + '가 꺼짐');
+								// 여기에 해당 스위치가 꺼졌을 때 수행할 기능 추가
+								// 예: switchOffFunction(index);
+							}
+						}
+					})(i));
+				}
 
-		 // 커스텀 오버레이를 생성합니다
-		 var customOverlay = new kakao.maps.CustomOverlay({
-		 map: map,
-		 position: position,
-		 content: content,
-		 yAnchor: 1 
-		 }); */
-
-		// end
-		loadBoard();
-
-		 function loadBoard() {
-			    $.ajax({
-			        url: "api/board/",
-			        type: "get",
-			        dataType: "json",
-			        success: function(data) {
-			            var mapContainer = document.getElementById('map');
-			            var mapOption = {
-			                center: new kakao.maps.LatLng(data[0].blockXCoordinate, data[0].blockYCoordinate),
-			                level: 4
-			            };
-			            var map = new kakao.maps.Map(mapContainer, mapOption);
-
-			            for (var i = 0; i < data.length; i++) {
-			                var markerPosition = new kakao.maps.LatLng(data[i].blockXCoordinate, data[i].blockYCoordinate);
-			                var marker = new kakao.maps.Marker({
-			                    map: map,
-			                    position: markerPosition,
-			                    title: data[i].title,
-			                    image: markerImage
-			                });
-			                
-			                var content = '<div class="customoverlay">' +
-			                    '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
-			                    '    <span class="title">' + data[i].blockPlace + '</span>' +
-			                    '  </a>' +
-			                    '</div>';
-			                var customOverlay = new kakao.maps.CustomOverlay({
-			                    position: markerPosition,
-			                    content: content,
-			                    yAnchor: 1
-			                });
-			                customOverlay.setMap(map);
-			            }
-			        },
-			        error: function() {
-			            alert("실패!");
-			        }
-			    });
+				kakao.maps.event.addListener(marker[i], 'click', (function (markerIndex) {
+					return function () {
+						toggleOverlay(markerIndex);
+					};
+				})(i));
 			}
-			
+		},
+		error: function () {
+			alert("실패!");
+		}
+	});
+}
+
+function custom(num) {
+	customOverlay[num].setMap(null);
+}
+
+function toggleOverlay(markerIndex) {
+	if (customOverlay[markerIndex].getMap()) {
+		customOverlay[markerIndex].setMap(null);
+	} else {
+		customOverlay[markerIndex].setMap(map);
+	}
+}
+
