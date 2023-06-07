@@ -8,7 +8,6 @@
 		select * from blockInfo
 	</select>
 	
-
 	<select id="breport" resultType="com.smhrd.iot.domain.Report">
 		select * from userReport
 	</select>
@@ -16,6 +15,12 @@
 	<select id="autoreport" resultType="com.smhrd.iot.domain.autoReport">
 		select * from autoReport
 	</select>
+	
+	
+	<!-- 블록 상태 -->
+	<update id="stateChange" parameterType="com.smhrd.iot.domain.Report">
+		update userReport set userReportState=#{userReportState} where userReportNum=#{userReportNum}
+	</update>
 	
 	
 </mapper>

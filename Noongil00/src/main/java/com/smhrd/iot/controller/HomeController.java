@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,24 +20,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smhrd.iot.domain.Board;
 import com.smhrd.iot.domain.UserInfo;
 import com.smhrd.iot.service.BoardService;
 import com.smhrd.iot.service.ManagerService;
+import com.smhrd.iot.service.ReportService;
 import com.smhrd.iot.service.UserService;
 
 
 @Controller
 public class HomeController {
 	
+	// @Autowired 1개당 주입은 1개만
 	@Autowired
 	private ManagerService service;
-	// @Autowired 1개당 주입은 1개만
 	
 	@Autowired
 	private UserService serviceUser;
 	
-	
+	@Autowired
+	private ReportService serviceReport;
 		
 	@GetMapping(value="/")
 	public String basic() {
@@ -124,10 +128,13 @@ public class HomeController {
 		
 	// 블록 처리 상태
 	@PostMapping("api/saveStatus")
-	public String blockState(@RequestBody String status) {
-		System.out.println(status);
-		
-		return "redirect:/userReport";
+	public String blockState(@RequestBody MultiValueMap<String, String> status) {
+	    String userReportState = status.getFirst("status");
+	    String userReportNum = status.getFirst("userReportNum");
+	    System.out.println("블록 상태: "+userReportState);
+	    System.out.println("해당 번호: "+userReportNum);
+	    serviceReport.stateChange(userReportState, userReportNum);
+	    return "redirect:/userReport";
 	}
 	
 

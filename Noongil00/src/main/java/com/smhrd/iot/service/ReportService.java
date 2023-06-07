@@ -21,4 +21,9 @@ public class ReportService {
 		return mapper.breport();
 	}
 	
+	// 블록 상태
+	public int stateChange(String userReportState, String userReportNum) {
+		return mapper.stateChange(userReportState, userReportNum);
+	}
+	
 }
