@@ -43,25 +43,6 @@ public class HomeController {
 		return "index";
 	}
 	
-
-	// 사용자 로그인
-//	@PostMapping(value="")
-//	public String userlogin(String userID, String userPW, HttpSession session) {
-//		System.out.println("id: " + userID + "pw: " + userPW);
-//		int result = service.userLogin(userID, userPW);
-//				
-//		if(result == 1) { // 로그인 성공
-//			System.out.println("성공: " + result);
-//			// 세션에 ID 저장
-//			session.setAttribute("userID", userID);
-//			return "userReport";
-//		}else { // 로그인 실패
-//			System.out.println("실패: " + result);
-//			return "index";
-//		}
-//	}
-
-	
 	// 관리자 로그인
 	@PostMapping(value="/web_user")
 	public String managerlogin(String managerID, String managerPW, HttpSession session) {
@@ -76,7 +57,7 @@ public class HomeController {
 			return "redirect:/"; 
 		}else { // 로그인 실패
 			System.out.println("실패: " + result);
-			return "index";
+			return "redirect:/";
 		}
 	}
 	
