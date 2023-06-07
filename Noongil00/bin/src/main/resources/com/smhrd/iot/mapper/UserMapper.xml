@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.iot.mapper.UserMapper"><!-- mapper interface의 경로와 동일 -->
+	<!-- 사용자 로그인 -->
+	<select id="userLogin" parameterType="String" resultType="_int">
+		select count(*) from userInfo where userID=#{userID} and userPW=#{userPW}
+	</select>
+
+	<!-- 사용자 전체 가져오기 -->
+	<select id="userList" resultType="com.smhrd.iot.domain.UserInfo">  
+		select * from userInfo
+	</select>
+	
+	<!-- 사용자 추가하기 -->
+	<insert id="userInsert" parameterType="com.smhrd.iot.domain.UserInfo">
+		insert into userInfo(userID, userPW, caneId, userName, userAddress, userTel, userBirth) 
+		values(#{userID}, #{userPW}, #{caneId}, #{userName}, #{userAddress}, #{userTel}, #{userBirth})
+	</insert>
+	
+	<!-- 사용자 정보 수정 : 전화번호, 주소만 수정 가능 -->
+	<update id="userUpdate" parameterType="com.smhrd.iot.domain.UserInfo">
+		update userInfo set userAddress=#{userAddress}, userTel=#{userTel} where userID=#{userID}
+	</update>
+	
+	<!-- 검색 -->
+	<select id="getSearchList" parameterType="com.smhrd.iot.domain.UserInfo" resultType="com.smhrd.iot.domain.UserInfo">
+		select * from userInfo where delete_yn='N'
+		<choose>
+			<when test="type !=null and type.equals('searchId')">
+			AND searchId LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type !=null and type.equals('searchName')">
+			AND searchName LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type !=null and type.equals('searchTel')">
+			AND searchTel = #{keyword}
+			</when>
+		</choose>
+	</select>
+</mapper>
