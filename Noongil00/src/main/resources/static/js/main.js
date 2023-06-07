@@ -161,3 +161,66 @@ function user(){
 		document.querySelector('.login-overlay').style.display = 'flex';			
 	}
 }
+
+
+// 게시글 검색
+function userSearch() {
+    var searchType = document.getElementById("searchType").value;
+    var searchInput = document.getElementById("searchInput").value.toUpperCase();
+    var rows = document.getElementById("userTableBody").getElementsByTagName("tr");
+    var hasResult = false; // 결과가 있는지 여부를 나타내는 변수
+
+    // 테이블의 각 행을 반복하여 검색 조건에 맞는 행만 보여주거나 숨깁니다.
+    for (var i = 0; i < rows.length; i++) {
+        var cells = rows[i].getElementsByTagName("td");
+        var showRow = false;
+
+        for (var j = 0; j < cells.length; j++) {
+            var cell = cells[j];
+            if (cell) {
+                var cellText = cell.textContent || cell.innerText;
+                if (searchType === "default" || searchType === "searchId") {
+                    // 사용자 ID로 검색
+                    if (cellText.toUpperCase().indexOf(searchInput) > -1) {
+                        showRow = true;
+                        hasResult = true; // 결과가 있음을 표시
+                        break;
+                    }
+                } else if (searchType === "searchName") {
+                    // 이름으로 검색
+                    if (cellText.toUpperCase().indexOf(searchInput) > -1) {
+                        showRow = true;
+                        hasResult = true; // 결과가 있음을 표시
+                        break;
+                    }
+                } else if (searchType === "searchTel") {
+                    // 연락처로 검색
+                    if (cellText.toUpperCase().indexOf(searchInput) > -1) {
+                        showRow = true;
+                        hasResult = true; // 결과가 있음을 표시
+                        break;
+                    }
+                }
+            }
+        }
+
+        rows[i].style.display = showRow ? "" : "none";
+    }
+
+		// 결과가 없을 때 "검색 결과가 없습니다." 메시지를 표시
+		var noResultRow = document.getElementById("noResultRow");
+			if (hasResult) {
+			    noResultRow.style.display = "none";
+			} else {
+		   		noResultRow.style.display = "table-row";
+			}
+
+    document.getElementById('searchInput').focus();
+}
+
+// Enter키로 검색
+function handleKeyPress(event) {
+    if (event.keyCode === 13) {
+        userSearch();
+    }
+}

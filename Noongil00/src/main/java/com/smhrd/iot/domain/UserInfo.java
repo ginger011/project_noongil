@@ -22,5 +22,9 @@ public class UserInfo {
 				+ ", userAddress=" + userAddress + ", userTel=" + userTel + ", userBirth=" + userBirth + "]";
 	}
 	
+	// 검색 필터
+//		private String type; // 검색 타입
+//		private String keyword; // 검색 내용
+	
 	
 }

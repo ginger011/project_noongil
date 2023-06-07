@@ -30,6 +30,7 @@ function loadbreport() {
 			alert("통신실패!");
 		});
 }
+
 function populateTable1(data) {
 	let result = '';
 	for (let i = 0; i < data.length; i++) {
@@ -48,7 +49,7 @@ function populateTable1(data) {
 		// 상태
 		result += "<th><span class='state' onclick='showAlert(this)'>" + data[i]['userReportState'] + "</span></th>";
 		result += "</tr>";
-	}
+	} console.log(data);
 	document.querySelector('.user-div tbody').innerHTML += result;
 }
 
@@ -61,7 +62,7 @@ function populateTable2(data) {
 		// 번호
 		result += "<th><span>" + data[i]['autoReportNum'] + "</span></th>";
 		// 구분
-		result += "<th><span>" + data[i]['autoID'] + "</span></th>";
+		result += "<th><span>" + data[i]['blockID'] + "</span></th>";
 		// 작성일자
 		result += "<th><span>" + data[i]['autoReportDate'] + "</span></th>";
 		// 위치
@@ -73,7 +74,8 @@ function populateTable2(data) {
 		result += "</tr>";
 	}
 	document.querySelector('.user-div tbody').innerHTML += result;
-}
+} 
+
 
 function showAlert(element) {
     const existingBox = document.querySelector('.status-box');
@@ -90,13 +92,42 @@ function showAlert(element) {
         let btn = statusBtns[i];
         btn.addEventListener('click', function() {
             if (i === 0) {
+                sendStatus('고장');
                 console.log('고장 버튼 눌러짐');
             } else if (i === 1) {
+                sendStatus('처리중');
                 console.log('처리중 버튼 눌러짐');
             } else if (i === 2) {
+				sendStatus('처리완료');
                 console.log('처리완료 버튼 눌러짐');
             }
             existingBox.style.display = 'none';
         })
     }
+}
+
+// 처리 상태 서버로 보내기
+function sendStatus(status) {
+    // 서버로 보낼 데이터를 구성합니다
+    const data = {
+        status: status
+    };
+
+    // AJAX 요청을 보냅니다
+    fetch('api/saveStatus', {
+        method: 'POST', // 요청 방식 (POST, GET 등)
+        headers: {
+            'Content-Type': 'application/json' // 요청 데이터 타입
+        },
+        body: JSON.stringify(data) // 요청 데이터를 JSON 문자열로 변환하여 전송
+    })
+    .then(response => response.json()) // 응답을 JSON 형식으로 파싱
+    .then(result => {
+        console.log('상태 값 저장 완료:', result);
+        // 저장이 성공적으로 완료되었을 때 수행할 작업을 추가하세요
+    })
+    .catch(error => {
+        console.error('상태 값 저장 실패:', error);
+        // 저장 실패 시 수행할 작업을 추가하세요
+    });
 }

@@ -63,22 +63,22 @@
 				</div>
 			</th:block>            
             
+            <!-- 게시글 검색 -->
             <div class="search">
-                <select name="" id="">
+            	<select name="type" id="searchType">
                     <option value="default" selected>전체</option>
-                    <option value="">사용자 ID</option>
-                    <option value="">이름</option>
-                    <option value="">연락처</option>
+                    <option value="searchId">사용자 ID</option>
+                    <option value="searchName">이름</option>
+                    <option value="searchTel">연락처</option>
                 </select>
-                <input type="text" placeholder="검색할 내용을 입력해주세요">
-                <button>
+                <input type="text" id="searchInput" onkeydown="handleKeyPress(event)" placeholder="검색할 내용을 입력해주세요">
+                <button onclick="userSearch()">
                     <span class="material-symbols-outlined">
                         search
                     </span>
                 </button>
             </div>
-
-
+			<!-- 게시글 검색 끝 -->
 
 
             <div class="user-div" id="table-info">
@@ -93,9 +93,13 @@
                             <th scope="col">주소</th>
                             <th scope="col">변경</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="UserInfo:${list}">
+                 </thead>
+                 <tbody id="userTableBody">
+                 		 <tr id="noResultRow" style="display: none;">
+						    <td colspan="6">검색 결과가 없습니다.</td>
+						 </tr>
+                 
+                        <tr th:each="UserInfo:${list}" id="searchResult">
                             <td><span th:text="${UserInfo.userID}"></span></td>
                             <td><span th:text="${UserInfo.userName}"></span></td>
                             <td><span th:text="${UserInfo.userBirth}"></td>
@@ -105,7 +109,7 @@
                                         settings
                                     </span></a></td>
                         </tr>
-                    </tbody>
+                  </tbody>              
                 </table>
 
                 <nav aria-label="Page navigation example" id="pagination">
@@ -173,14 +177,7 @@
             </form>
         </div>
     </div>
-    
-    <script>
-        
-    </script>
-    
-    
-    
-    
+   
     <script src="./js/main.js"></script>
     <script src="./js/user.js"></script>
 </body>

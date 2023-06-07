@@ -16,5 +16,6 @@
 	<select id="autoreport" resultType="com.smhrd.iot.domain.autoReport">
 		select * from autoReport
 	</select>
-
+	
+	
 </mapper>

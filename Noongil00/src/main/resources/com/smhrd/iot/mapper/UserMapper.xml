@@ -21,4 +21,20 @@
 	<update id="userUpdate" parameterType="com.smhrd.iot.domain.UserInfo">
 		update userInfo set userAddress=#{userAddress}, userTel=#{userTel} where userID=#{userID}
 	</update>
+	
+	<!-- 검색 -->
+	<select id="getSearchList" parameterType="com.smhrd.iot.domain.UserInfo" resultType="com.smhrd.iot.domain.UserInfo">
+		select * from userInfo where delete_yn='N'
+		<choose>
+			<when test="type !=null and type.equals('searchId')">
+			AND searchId LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type !=null and type.equals('searchName')">
+			AND searchName LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type !=null and type.equals('searchTel')">
+			AND searchTel = #{keyword}
+			</when>
+		</choose>
+	</select>
 </mapper>

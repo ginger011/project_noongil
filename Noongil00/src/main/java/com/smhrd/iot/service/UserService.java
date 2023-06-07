@@ -33,5 +33,5 @@ public class UserService {
 	public void userUpdate(UserInfo userInfo) {
 		mapper.userUpdate(userInfo);
 	}
-
+	
 }

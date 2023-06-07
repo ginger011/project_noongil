@@ -72,20 +72,22 @@
 				</div>
 			</th:block>     
             
+            <!-- 게시글 검색 -->
             <div class="search">
-                <select name="" id="">
+            	<select name="type" id="searchType">
                     <option value="default" selected>전체</option>
-                    <option value="">사용자 ID</option>
-                    <option value="">이름</option>
-                    <option value="">연락처</option>
+                    <option value="searchId">사용자 ID</option>
+                    <option value="searchPlace">위치</option>
+                    <option value="searchState">처리상태</option>
                 </select>
-                <input type="text" placeholder="검색할 내용을 입력해주세요">
-                <button>
+                <input type="text" id="searchInput" onkeydown="handleKeyPress(event)" placeholder="검색할 내용을 입력해주세요">
+                <button onclick="reportSearch()">
                     <span class="material-symbols-outlined">
                         search
                     </span>
                 </button>
             </div>
+            <!-- 게시글 검색 끝 -->
 
             <div class="user-div">
                 <!-- 여긴 뭐가 들어갈까요? -->
@@ -93,15 +95,17 @@
                     <thead style="background-color: #83B6A5;">
                         <tr>
                             <th scope="col">번호</th>
-                            <th scope="col">구분</th>
+                            <th scope="col">ID</th>
                             <th scope="col">작성일자</th>
                             <th scope="col">위치</th>
                             <th scope="col">내용</th>
                             <th scope="col">상태</th>
                         </tr>
                     </thead>
-                    <tbody>
-
+                    <tbody id="reportTableBody">
+						 <tr id="noResultRow" style="display: none;">
+						    <td colspan="6">검색 결과가 없습니다.</td>
+						 </tr>
                         
                     </tbody>
                 </table>
