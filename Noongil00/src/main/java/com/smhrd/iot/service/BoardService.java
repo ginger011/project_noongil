@@ -1,9 +1,12 @@
 package com.smhrd.iot.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.smhrd.iot.domain.Board;
 import com.smhrd.iot.mapper.BoardMapper;
@@ -23,9 +26,19 @@ public class BoardService {
 		
 	}
 	
-	public String thermic() {
-		return null;
-	}
+//	public String onthermic() {
+//		
+//		ResponseEntity<String> getData() throws IOException {
+//	        // .json 파일 경로
+//	        String filePath = "com/smhrd/iot/json/getjson.json";
+//		return null;
+//	}
+//	}
+//		
+//	
+//	public String offthermic() {
+//		return null;
+//	}
 
 //	public List<Board> board(){
 //		return mapper.board();

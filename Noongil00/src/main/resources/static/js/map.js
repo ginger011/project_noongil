@@ -52,7 +52,7 @@ function loadBoard() {
 					'<label class="form-check-label" for="flexSwitchCheckChecked' + i + '">열선</label>' +
 					'</div>' +
 					'</div>';
-
+		
 				customOverlay[i] = new kakao.maps.CustomOverlay({
 					position: markerPosition,
 					content: content,
@@ -66,21 +66,50 @@ function loadBoard() {
 				// 스위치 버튼 변경 이벤트 리스너 추가
 				if (switchElement) {
 					switchElement.addEventListener('change', (function (index) {
-						return function () {
+						return function test2() {
+							
 							if (this.checked) {
 								// 스위치가 켜진 상태일 때의 동작
 								console.log('스위치 ' + index + '가 켜짐');
 								// 여기에 해당 스위치가 켜졌을 때 수행할 기능 추가
 								// 예: switchOnFunction(index);
+								console.log('스위치 채크'+index+this.checked)
+								$.ajax({
+									url:"http://172.30.1.46:8080/on",
+									type: "get",
+									success:(res) =>{
+										console.log(res)
+									},
+								error: function () {
+									alert("스위치켜기 실패!");
+									}
+								});
+								
+
 							} else {
 								// 스위치가 꺼진 상태일 때의 동작
 								console.log('스위치 ' + index + '가 꺼짐');
 								// 여기에 해당 스위치가 꺼졌을 때 수행할 기능 추가
 								// 예: switchOffFunction(index);
+								console.log('스위치 채크'+index+this.checked)
+								$.ajax({
+									url:"http://172.30.1.46:8080/off",
+									type: "get",
+									success:function(){
+										console.log("성공")
+									},
+								error: function () {
+									alert("스위치끄기 실패!");
+									}
+								})
 							}
+
+
 						}
+						
 					})(i));
 				}
+
 
 				kakao.maps.event.addListener(marker[i], 'click', (function (markerIndex) {
 					return function () {
