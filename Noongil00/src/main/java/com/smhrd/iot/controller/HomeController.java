@@ -36,8 +36,6 @@ public class HomeController {
 	@Autowired
 	private UserService serviceUser;
 	
-	
-		
 	@GetMapping(value="/")
 	public String basic() {
 		return "index";

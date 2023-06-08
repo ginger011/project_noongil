@@ -1,19 +1,17 @@
 var settingsLinks = document.getElementsByClassName('settings-link');
-        var userInfo = {
-            userID: '',
-            userName: '',
-            userBirth: '',
-            userTel: '',
-            userAddress: ''
-        };
+var userInfo = {
+    userID: '',
+    userName: '',
+    userBirth: '',
+    userTel: '',
+    userAddress: ''
+};
 
 for (var i = 0; i < settingsLinks.length; i++) {
     settingsLinks[i].addEventListener('click', function (event) {
         event.preventDefault(); // 기본 링크 동작을 중단합니다.
-
         var tr = this.closest('tr');
         var tds = tr.querySelectorAll('td');
-
 
         for (var j = 0; j < tds.length; j++) {
             var td = tds[j];
@@ -39,8 +37,8 @@ for (var i = 0; i < settingsLinks.length; i++) {
         console.log('선택한 settings의 인덱스는 ' + settingsIndex + '입니다.');
         console.log(userInfo);
 
-        var loginDiv = document.querySelector('.change');
-        var inputElements = loginDiv.getElementsByTagName('input');
+        var changeOverlay = document.querySelector('.change-overlay');
+        var inputElements = changeOverlay.getElementsByTagName('input');
 
         if (inputElements.length === 4) {
             inputElements[0].value = userInfo.userName;
@@ -49,7 +47,10 @@ for (var i = 0; i < settingsLinks.length; i++) {
             inputElements[3].value = userInfo.userAddress;
         }
 
-        loginDiv.style.display = 'block';
+        changeOverlay.style.display = 'flex';
+
+        var userTelInput = document.getElementById('userTel');
+        userTelInput.focus();
     });
 }
 
@@ -59,11 +60,11 @@ document.querySelector('.change button:last-child').addEventListener('click', fu
 });
 
 // 정보 수정
-function changeSave(userInfo){
-var userID = userInfo['userID']; // 실제로는 동적으로 userID 값을 설정해야 합니다.
-var form = document.getElementById("userUpdateForm");
-console.log('userID')
-form.action = "user/update/" + userID;
+function changeSave(userInfo) {
+    var userID = userInfo['userID']; // 실제로는 동적으로 userID 값을 설정해야 합니다.
+    var form = document.getElementById("userUpdateForm");
+    console.log('userID')
+    form.action = "user/update/" + userID;
 
 }
 

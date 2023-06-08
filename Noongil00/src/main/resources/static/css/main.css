@@ -516,25 +516,33 @@
 }
 
 .input-readonly {
-    background-color: #e5e5e5;
+    background-color: rgb(201, 201, 201) !important;
     pointer-events: none;
 }
 
 
-
 .change-form input {
-    padding-left: 5px;
+    padding-left: 50px;
 
 }
 
 .change-overlay {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 500px;
+    height: 700px;
+    /* background-color: #157ae1; */
+    margin: auto;
 }
 
 .change {
-    display: none;
+    display: block;
     position: absolute;
 }
 

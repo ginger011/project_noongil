@@ -29,40 +29,40 @@
         <img src="./img/nungil_back_img.png" alt="" class="back-img">
         <nav class="main-nav">
             <ul>
-				<li id="move-main">
-					<a href="/noongil/"><span>메인페이지</span></a>
-				</li>
-				<li id="move-jumja">
-					<a href="/noongil/map"><span>점자블록</span></a>
-				</li>
-				<li id="move-error">
-					<a href="/noongil/userReport"><span>고장신고</span></a>
-				</li>
-				<li id="move-memInfo">
-					<a href="/noongil/user"><span>회원정보</span></a>
-				</li>
-			</ul>
+                <li id="move-main">
+                    <a href="/noongil/"><span>메인페이지</span></a>
+                </li>
+                <li id="move-jumja">
+                    <a href="/noongil/map"><span>점자블록</span></a>
+                </li>
+                <li id="move-error">
+                    <a href="/noongil/userReport"><span>고장신고</span></a>
+                </li>
+                <li id="move-memInfo">
+                    <a href="/noongil/user"><span>회원정보</span></a>
+                </li>
+            </ul>
         </nav>
 
         <div class="main-body">
-       		<th:block th:if="${session.managerID == null}">
-            <div class="main-login">
-				<span><span id=loginText>로그인 해주세요 </span></span>
-                <button class="btn-login">로그인</button>
-            </div>
+            <th:block th:if="${session.managerID == null}">
+                <div class="main-login">
+                    <span><span id=loginText>로그인 해주세요 </span></span>
+                    <button class="btn-login">로그인</button>
+                </div>
             </th:block>
-            
+
             <th:block th:if="${session.managerID != null}" th:object="${session}">
-				<div class="main-login">
-				
-					<span th:text="${session.managerID} + '님 환영합니다.'"></span>
-					<button class="btn-login">로그인</button>
-				</div>
-			</th:block>            
-            
+                <div class="main-login">
+
+                    <span th:text="${session.managerID} + '님 환영합니다.'"></span>
+                    <button class="btn-login">로그인</button>
+                </div>
+            </th:block>
+
             <!-- 게시글 검색 -->
             <div class="search">
-            	<select name="type" id="searchType">
+                <select name="type" id="searchType">
                     <option value="default" selected>전체</option>
                     <option value="searchId">사용자 ID</option>
                     <option value="searchName">이름</option>
@@ -75,7 +75,7 @@
                     </span>
                 </button>
             </div>
-			<!-- 게시글 검색 끝 -->
+            <!-- 게시글 검색 끝 -->
 
 
             <div class="user-div" id="table-info">
@@ -90,12 +90,12 @@
                             <th scope="col">주소</th>
                             <th scope="col">변경</th>
                         </tr>
-                 </thead>
-                 <tbody id="userTableBody">
-                 		 <tr id="noResultRow" style="display: none;">
-						    <td colspan="6">검색 결과가 없습니다.</td>
-						 </tr>
-                 
+                    </thead>
+                    <tbody id="userTableBody">
+                        <tr id="noResultRow" style="display: none;">
+                            <td colspan="6">검색 결과가 없습니다.</td>
+                        </tr>
+
                         <tr th:each="UserInfo:${list}" id="searchResult">
                             <td><span th:text="${UserInfo.userID}"></span></td>
                             <td><span th:text="${UserInfo.userName}"></span></td>
@@ -106,7 +106,7 @@
                                         settings
                                     </span></a></td>
                         </tr>
-                  </tbody>              
+                    </tbody>
                 </table>
 
                 <nav aria-label="Page navigation example" id="pagination">
@@ -130,23 +130,23 @@
 
     <!-- 로그인 창 -->
     <div class="login-overlay">
-		<div class="login">
-			<div class="avatar">
-				<img src="./img/IMG_0456.PNG" alt="">
-			</div>
-			<h2>Log In</h2>
-			<h3>Welcome to NoonGil</h3>
-			<form class="login-form" action="web_user" method="post">
-				<div class="textbox">
-					<input type="text" placeholder="아이디를 입력해주세요" name="managerID" id="managerID" /> 
-					<span class="material-symbols-outlined"> account_circle </span>
-				</div>
-				<div class="textbox">
-					<input type="password" placeholder="비밀번호를 입력해주세요" name="managerPW" id="managerPW">
-					<span class="material-symbols-outlined"> lock </span>
-				</div>
-				<button type="submit" id="loginCheck" onclick="loginStore()">LOGIN</button>
-				<a href="#"> 비밀번호를 잊으셨나요? </a>
+        <div class="login">
+            <div class="avatar">
+                <img src="./img/IMG_0456.PNG" alt="">
+            </div>
+            <h2>Log In</h2>
+            <h3>Welcome to NoonGil</h3>
+            <form class="login-form" action="web_user" method="post">
+                <div class="textbox">
+                    <input type="text" placeholder="아이디를 입력해주세요" name="managerID" id="managerID" />
+                    <span class="material-symbols-outlined"> account_circle </span>
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="비밀번호를 입력해주세요" name="managerPW" id="managerPW">
+                    <span class="material-symbols-outlined"> lock </span>
+                </div>
+                <button type="submit" id="loginCheck" onclick="loginStore()">LOGIN</button>
+                <a href="#"> 비밀번호를 잊으셨나요? </a>
             </form>
         </div>
     </div>
@@ -158,23 +158,29 @@
             <form class="login-form change-form" action="" method="post" id="userUpdateForm">
                 <div class="textbox">
                     <input type="text" value="" id="userName" class="input-readonly" />
+                    <span class="material-symbols-outlined"> badge </span>
                 </div>
                 <div class="textbox">
                     <input type="text" value="" id="userBirth" class="input-readonly" />
+                    <span class="material-symbols-outlined">
+                        sentiment_satisfied
+                    </span>
                 </div>
                 <div class="textbox">
-                    <input type="text" value="" id="userTel" name="userTel"/>
+                    <input type="text" value="" id="userTel" name="userTel" />
+                    <span class="material-symbols-outlined"> call </span>
                 </div>
                 <div class="textbox">
-                    <input type="text" value="" id="userAddress" name="userAddress"/>
+                    <input type="text" value="" id="userAddress" name="userAddress" />
+                    <span class="material-symbols-outlined"> home </span>
                 </div>
-    
+
                 <button type="submit" onclick="changeSave(userInfo)">저장하기</button>
                 <button type="button" style="background-color: rgba(255, 83, 83, 1);">취소</button>
             </form>
         </div>
     </div>
-   
+
     <script src="./js/main.js"></script>
     <script src="./js/user.js"></script>
 </body>
