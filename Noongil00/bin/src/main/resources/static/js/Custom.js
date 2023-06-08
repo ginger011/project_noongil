@@ -1,4 +1,3 @@
-// 커스텀 오버레이 생성하기 
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 

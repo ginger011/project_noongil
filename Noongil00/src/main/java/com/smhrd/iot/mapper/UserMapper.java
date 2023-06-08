@@ -20,4 +20,7 @@ public interface UserMapper {
 	
 	// 사용자 정보 수정
 	public void userUpdate(UserInfo userInfo);
+	
+	// 검색
+	public List<UserInfo> getSearchList(UserInfo userInfo);
 }

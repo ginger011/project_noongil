@@ -10,6 +10,7 @@ import lombok.Setter;
 public class UserInfo {
 	private String userID;
 	private String userPW;
+	private String userPW2;
 	private String caneId;
 	private String userName;
 	private String userAddress;
@@ -20,6 +21,10 @@ public class UserInfo {
 		return "UserInfo [userID=" + userID + ", userPW=" + userPW + ", caneId=" + caneId + ", userName=" + userName
 				+ ", userAddress=" + userAddress + ", userTel=" + userTel + ", userBirth=" + userBirth + "]";
 	}
+	
+	// 검색 필터
+//		private String type; // 검색 타입
+//		private String keyword; // 검색 내용
 	
 	
 }
