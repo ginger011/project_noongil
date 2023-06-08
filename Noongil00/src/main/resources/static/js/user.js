@@ -55,7 +55,7 @@ for (var i = 0; i < settingsLinks.length; i++) {
 }
 
 document.querySelector('.change button:last-child').addEventListener('click', function (event) {
-    var loginDiv = document.querySelector('.change');
+    var loginDiv = document.querySelector('.change-overlay');
     loginDiv.style.display = 'none';
 });
 
