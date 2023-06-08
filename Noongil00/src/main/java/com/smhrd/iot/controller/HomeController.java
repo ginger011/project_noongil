@@ -12,52 +12,40 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.smhrd.iot.domain.Board;
 import com.smhrd.iot.domain.UserInfo;
+import com.smhrd.iot.service.BoardService;
 import com.smhrd.iot.service.ManagerService;
+import com.smhrd.iot.service.ReportService;
 import com.smhrd.iot.service.UserService;
 
 
 @Controller
 public class HomeController {
 	
+	// @Autowired 1개당 주입은 1개만
 	@Autowired
 	private ManagerService service;
-	// @Autowired 1개당 주입은 1개만
 	
 	@Autowired
 	private UserService serviceUser;
 	
-	
-		
+	@Autowired
+	private ReportService serviceReport;
+
 	@GetMapping(value="/")
 	public String basic() {
 		return "index";
 	}
-	
-
-	// 사용자 로그인
-//	@PostMapping(value="")
-//	public String userlogin(String userID, String userPW, HttpSession session) {
-//		System.out.println("id: " + userID + "pw: " + userPW);
-//		int result = service.userLogin(userID, userPW);
-//				
-//		if(result == 1) { // 로그인 성공
-//			System.out.println("성공: " + result);
-//			// 세션에 ID 저장
-//			session.setAttribute("userID", userID);
-//			return "userReport";
-//		}else { // 로그인 실패
-//			System.out.println("실패: " + result);
-//			return "index";
-//		}
-//	}
-
 	
 	// 관리자 로그인
 	@PostMapping(value="/web_user")
@@ -73,7 +61,7 @@ public class HomeController {
 			return "redirect:/"; 
 		}else { // 로그인 실패
 			System.out.println("실패: " + result);
-			return "index";
+			return "redirect:/";
 		}
 	}
 	
@@ -96,31 +84,39 @@ public class HomeController {
 	}
 	
 	// 사용자 정보 수정하기
-		@PostMapping("user/update/{userID}")
-		public String userUpdate(@PathVariable("userID") String userID,  
-				@RequestParam("userTel") String userTel, 
-				@RequestParam("userAddress") String userAddress) {
-			
-			System.out.println("전화번호: " + userTel + "주소" + userAddress);
-			UserInfo userInfo = new UserInfo();
-			userInfo.setUserID(userID);
-			userInfo.setUserTel(userTel);
-			userInfo.setUserAddress(userAddress);
-			serviceUser.userUpdate(userInfo);
-			return "redirect:/user";
-		}
+	@PostMapping("user/update/{userID}")
+	public String userUpdate(@PathVariable("userID") String userID,  
+			@RequestParam("userTel") String userTel, 
+			@RequestParam("userAddress") String userAddress) {
+		
+		System.out.println("전화번호: " + userTel + "/ 주소: " + userAddress);
+		UserInfo userInfo = new UserInfo();
+		userInfo.setUserID(userID);
+		userInfo.setUserTel(userTel);
+		userInfo.setUserAddress(userAddress);
+		serviceUser.userUpdate(userInfo);
+		return "redirect:/user";
+	}
 		
 		
-		// 사용자 추가하기
-		@PostMapping("user/insert")
-		public String userInsert(UserInfo userInfo) {
-			System.out.println(userInfo);
-			
-			serviceUser.userInsert(userInfo);
-			return "redirect:/user";
-		}
+	// 사용자 추가하기
+	@PostMapping("user/insert")
+	public String userInsert(UserInfo userInfo) {
+		System.out.println(userInfo);
+		serviceUser.userInsert(userInfo);
+		return "redirect:/user";
+	}
 		
-
+	// 블록 처리 상태
+	@PostMapping("api/saveStatus")
+	public String blockState(@RequestBody MultiValueMap<String, String> status) {
+	    String userReportState = status.getFirst("status");
+	    String userReportNum = status.getFirst("userReportNum");
+	    System.out.println("블록 상태: "+userReportState);
+	    System.out.println("해당 번호: "+userReportNum);
+	    serviceReport.stateChange(userReportState, userReportNum);
+	    return "redirect:/userReport";
+	}
 	
 
 	@GetMapping(value="/map")

@@ -20,5 +20,5 @@ public class Board {
 	private String blockXCoordinate;
 	private String blockYCoordinate;
 	
-
+	
 }

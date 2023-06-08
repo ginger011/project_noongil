@@ -59,7 +59,7 @@
     background-color: white;
     border-radius: 100px;
     padding: 100px 50px 50px 50px;
-    height: 500px;
+    height: 1000px;
     position: relative;
 }
 
@@ -80,17 +80,15 @@
     display: flex;
     justify-content: center;
     /* background-color: bisque; */
-    padding-bottom: 50px;
+    margin-bottom: 30px;
 }
 
-.main-threebox>div {
+.main-threebox > div {
     margin: 0 10px;
     /* 필요에 따라 여백을 조정하세요 */
     height: 300px;
     border-radius: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
 }
 
 #threebox-1 {
@@ -106,6 +104,11 @@
 #threebox-3 {
     width: 25%;
     background-color: #C1D7BD;
+}
+
+#weather-title {
+    margin-top: 20px;
+    margin-left: 40px;
 }
 
 .main-bigBox {
@@ -439,15 +442,15 @@
     font-size: 14px;
     font-weight: bold;
     overflow: hidden;
-    background: #d95050;
-    background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
+    /* background: #d95050; */
+    background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png) no-repeat right 14px center;
 }
 
 .customoverlay .title {
     display: block;
     text-align: center;
     background: #fff;
-    margin-right: 35px;
+    margin-right: 30px;
     padding: 10px 15px;
     font-size: 14px;
     font-weight: bold;
@@ -516,25 +519,32 @@
 }
 
 .input-readonly {
-    background-color: #e5e5e5;
+    background-color: rgb(201, 201, 201) !important;
     pointer-events: none;
 }
 
 
-
 .change-form input {
-    padding-left: 5px;
-
+    padding-left: 50px;
 }
 
 .change-overlay {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 500px;
+    height: 700px;
+    /* background-color: #157ae1; */
+    margin: auto;
 }
 
 .change {
-    display: none;
+    display: block;
     position: absolute;
 }
 
@@ -701,3 +711,38 @@
     color: #5085BB;
 }
 
+.horizontal-container {
+    display: flex;
+}
+
+.weather-icon {
+    margin-right: 10px;
+}
+
+#temperature {
+    margin: auto;
+
+}
+
+#weatherInfo {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: #3B735A; */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#windSpeed {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: #888; */
+}
+
+.weather-box {
+    width: 80%;
+    /* background-color: #5085BB; */
+    margin: 0 auto;
+    text-align: center;
+}

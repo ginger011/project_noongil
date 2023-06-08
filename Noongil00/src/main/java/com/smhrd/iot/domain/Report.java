@@ -8,9 +8,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Report {
+	private String userReportNum;
 	private String userID;
 	private String userReportPlace;
 	private String userReportContent;
 	private String userReportState;
+	private String userReportDate;
 
 }

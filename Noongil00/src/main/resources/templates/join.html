@@ -40,12 +40,9 @@
 				<li id="move-error">
 					<a href="/noongil/userReport"><span>고장신고</span></a>
 				</li>
-				<li id="move-memInfo">
+				<li id="move-memInfo" class="active">
 					<a href="/noongil/user"><span>회원정보</span></a>
 				</li>
-				<!-- <li id="move-report">
-					<a href="#"><span>자동알림</span></a>
-				</li> -->
 			</ul>
 		</nav>
 		
@@ -88,7 +85,7 @@
                     
 				</div>
 				<div class="textbox">
-					<input type="password" placeholder="비밀번호 확인" name="userBirth" id="userBirth">
+					<input type="password" placeholder="비밀번호 확인" name="userPW2" id="userPW2">
 					<span class="material-symbols-outlined">
 						lock
 					</span>
@@ -109,14 +106,21 @@
                         smartphone
                         </span>
 				</div>
-                <p>주소</p>
+				<p>* 생년월일</p>
+                <div class="textbox">
+					<input type="text" placeholder="사용자의 생년월일을 입력해주세요" id="userBirth" name="userBirth"/>
+					<span class="material-symbols-outlined">
+						celebration
+					</span>
+				</div>
+                <p>* 주소</p>
                 <div class="textbox">
 					<input type="text" placeholder="사용자의 주소를 입력해주세요" id="userAddress" name="userAddress"/>
 					<span class="material-symbols-outlined">
 						home
 					</span>
 				</div>
-                <p>지팡이ID</p>
+                <p>* 지팡이ID</p>
                 <div class="textbox">
 					<input type="text" placeholder="지팡이ID를 입력해주세요" id="caneId" name="caneId"/>
 					<span class="material-symbols-outlined">

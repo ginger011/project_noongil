@@ -34,4 +34,6 @@ public class BoardService {
 //	public void insert(Board b) {
 //		mapper.insert(b);
 //	}
+	
+
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.iot.mapper.AndroidMapper">
+
+<insert id="userAndroidJoin" parameterType="com.smhrd.iot.domain.UserInfo">
+		insert into userInfo (userID, userPW, userName, userAddress, userTel, userBirth, caneId) 
+		values (#{userID},#{userPW},#{userName},#{userAddress},#{userTel},#{userBirth},#{caneId})
+</insert>
+
+<insert id="userAppReport" parameterType="com.smhrd.iot.domain.Report">
+	insert into userReport (userId, userReportPlace, userReportContent,userReportState) values 
+	(#{userID},#{userReportPlace},#{userReportContent},#{userReportState})
+</insert>
+
+<insert id="userNonUserAppReport" parameterType="com.smhrd.iot.domain.Report">
+	insert into nonUserReport (nonUserID, nonUserReportPlace, nonUserReportContent,nonUserReportState) values 
+	(#{nonUserID},#{nonUserReportPlace},#{nonUserReportContent},#{nonUserReportState})
+</insert>
+
+<insert id="androidBlindCall" parameterType="com.smhrd.iot.domain.BlindCall">
+	insert into blindCall (userId, blindCallDestination, blindCallDate) values 
+	(#{userId},#{blindCallDestination}, #{blindCallDate})
+</insert>
+
+<select id="userAndroidLogin" parameterType="com.smhrd.iot.domain.UserInfo" resultType="int">
+    SELECT CASE WHEN EXISTS (
+        SELECT 1 FROM userInfo WHERE userID=#{userID} AND userPW=#{userPW}
+    ) THEN 1 ELSE 0 END
+</select>
+
+<select id="getUserInfoByUserId" parameterType="String" resultType="com.smhrd.iot.domain.UserInfo">
+    SELECT * FROM userInfo WHERE userID = #{userId}
+</select>
+
+<!-- 회원 정보 수정 -->
+<update id="updateUserInfo" parameterType="com.smhrd.iot.domain.UserInfo">
+    UPDATE userInfo SET
+    userPW = #{userPW},
+    userName = #{userName},
+    userAddress = #{userAddress},
+    userTel = #{userTel},
+    userBirth = #{userBirth},
+    caneId = #{caneId}
+    WHERE userID = #{userID}
+</update>
+
+</mapper>
