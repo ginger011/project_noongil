@@ -80,17 +80,15 @@
     display: flex;
     justify-content: center;
     /* background-color: bisque; */
-    padding-bottom: 50px;
+    margin-bottom: 30px;
 }
 
-.main-threebox>div {
+.main-threebox > div {
     margin: 0 10px;
     /* 필요에 따라 여백을 조정하세요 */
     height: 300px;
     border-radius: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
 }
 
 #threebox-1 {
@@ -106,6 +104,11 @@
 #threebox-3 {
     width: 25%;
     background-color: #C1D7BD;
+}
+
+#weather-title {
+    margin-top: 20px;
+    margin-left: 40px;
 }
 
 .main-bigBox {
@@ -708,3 +711,38 @@
     color: #5085BB;
 }
 
+.horizontal-container {
+    display: flex;
+}
+
+.weather-icon {
+    margin-right: 10px;
+}
+
+#temperature {
+    margin: auto;
+
+}
+
+#weatherInfo {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: #3B735A; */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#windSpeed {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: #888; */
+}
+
+.weather-box {
+    width: 80%;
+    /* background-color: #5085BB; */
+    margin: 0 auto;
+    text-align: center;
+}
