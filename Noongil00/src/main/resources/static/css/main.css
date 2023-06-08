@@ -439,15 +439,15 @@
     font-size: 14px;
     font-weight: bold;
     overflow: hidden;
-    background: #d95050;
-    background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
+    /* background: #d95050; */
+    background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png) no-repeat right 14px center;
 }
 
 .customoverlay .title {
     display: block;
     text-align: center;
     background: #fff;
-    margin-right: 35px;
+    margin-right: 30px;
     padding: 10px 15px;
     font-size: 14px;
     font-weight: bold;
@@ -523,7 +523,6 @@
 
 .change-form input {
     padding-left: 50px;
-
 }
 
 .change-overlay {
