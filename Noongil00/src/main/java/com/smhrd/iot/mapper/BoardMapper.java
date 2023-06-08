@@ -17,6 +17,9 @@ public interface BoardMapper {
 	
 	public List<autoReport> autoreport();
 
+	// 블록 상태
+	public int stateChange(String userReportState, String userReportNum);
+
 
 	
 //	@Insert("insert into board(title, content, writer) values(#{title}, #{content}, #{writer})")
