@@ -16,6 +16,8 @@ var customOverlay = [];
 // 여러개의 마커를 담는 배열
 var marker = [];
 
+
+
 function loadBoard() {
 	$.ajax({
 		url: "api/board/",
@@ -58,58 +60,9 @@ function loadBoard() {
 					content: content,
 					yAnchor: 1
 				});
-				// customOverlay[i].setMap(map);
+				 // customOverlay[i].setMap(map);
 
-				// 스위치 버튼 요소 가져오기
-				var switchElement = document.getElementById('flexSwitchCheckChecked' + i);
-
-				// 스위치 버튼 변경 이벤트 리스너 추가
-				if (switchElement) {
-					switchElement.addEventListener('change', (function (index) {
-						return function test2() {
-							
-							if (this.checked) {
-								// 스위치가 켜진 상태일 때의 동작
-								console.log('스위치 ' + index + '가 켜짐');
-								// 여기에 해당 스위치가 켜졌을 때 수행할 기능 추가
-								// 예: switchOnFunction(index);
-								console.log('스위치 채크'+index+this.checked)
-								$.ajax({
-									url:"http://172.30.1.46:8080/on",
-									type: "get",
-									success:(res) =>{
-										console.log(res)
-									},
-								error: function () {
-									alert("스위치켜기 실패!");
-									}
-								});
-								
-
-							} else {
-								// 스위치가 꺼진 상태일 때의 동작
-								console.log('스위치 ' + index + '가 꺼짐');
-								// 여기에 해당 스위치가 꺼졌을 때 수행할 기능 추가
-								// 예: switchOffFunction(index);
-								console.log('스위치 채크'+index+this.checked)
-								$.ajax({
-									url:"http://172.30.1.46:8080/off",
-									type: "get",
-									success:function(){
-										console.log("성공")
-									},
-								error: function () {
-									alert("스위치끄기 실패!");
-									}
-								})
-							}
-
-
-						}
-						
-					})(i));
-				}
-
+				
 
 				kakao.maps.event.addListener(marker[i], 'click', (function (markerIndex) {
 					return function () {
@@ -132,6 +85,58 @@ function toggleOverlay(markerIndex) {
 		customOverlay[markerIndex].setMap(null);
 	} else {
 		customOverlay[markerIndex].setMap(map);
+		
+		// 스위치 버튼 요소 가져오기
+				var switchElement = document.getElementById('flexSwitchCheckChecked' + markerIndex);
+
+				// 스위치 버튼 변경 이벤트 리스너 추가
+				if (switchElement) {
+					switchElement.addEventListener('change', (function (index) {
+						return function () {
+							console.log("화긴"+switchElement)
+							if (this.checked) {
+								// 스위치가 켜진 상태일 때의 동작
+								console.log('스위치 ' + index + '가 켜짐');
+								// 여기에 해당 스위치가 켜졌을 때 수행할 기능 추가
+								// 예: switchOnFunction(index);
+								console.log('스위치 채크'+index+this.checked)
+								$.ajax({
+									url:"http://172.30.1.46:8080/on",
+									type: "get",
+									success:(res) =>{
+										console.log(res)
+									},
+								error: function () {
+									
+									}
+								});
+								
+
+							} else {
+								// 스위치가 꺼진 상태일 때의 동작
+								console.log('스위치 ' + index + '가 꺼짐');
+								// 여기에 해당 스위치가 꺼졌을 때 수행할 기능 추가
+								// 예: switchOffFunction(index);
+								console.log('스위치 채크'+index+this.checked)
+								$.ajax({
+									url:"http://172.30.1.46:8080/off",
+									type: "get",
+									success:function(){
+										console.log("성공")
+									},
+								error: function () {
+									
+									}
+								})
+							}
+
+
+						}
+						
+					})(markerIndex));
+				}
+
+		
 	}
 }
 
