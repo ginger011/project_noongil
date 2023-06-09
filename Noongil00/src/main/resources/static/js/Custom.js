@@ -1,3 +1,21 @@
+function onClick() {
+	function thermic() {
+		$.ajax({
+			url: "api/thermic/",  //요청경로
+			type: "get", //요청방식(get/post)
+			dataType: "String",   //서버 반환 데이터 타입
+			success: function () {
+				// 버튼 css 끌고와 여기 적기
+				
+				console.log();
+			},
+			error: function () {
+				alert("통신실패!");
+			}
+		});
+	}
+}
+
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
