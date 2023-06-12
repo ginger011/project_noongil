@@ -19,27 +19,52 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.smhrd.iot.domain.Json;
+import com.smhrd.iot.domain.battery;
 import com.smhrd.iot.service.jsonService;
 
 
+//@RestController
+//@RequestMapping("/json")
+//public class jsonController {
+//	String j;
+//	
+//	@Autowired
+//	private jsonService service;
+//	
+//	@RequestMapping("/json")
+//	//json으로 넣기위해서 @RequestBody으로 파싱한다
+//	public String receiveJsonData(@RequestBody String j ) {
+//		System.out.println("컨트롤러에 들어옴!");
+//		System.out.println(j);
+////		System.out.println(j.getGreenLightTime());
+//		this.j = j;
+//		//최종에 jsonService삭제 예정
+//		return null;
+//	}
+	
+	
 @RestController
 @RequestMapping("/json")
 public class jsonController {
-	String j;
+	Json j;
+	battery b;
 	
 	@Autowired
 	private jsonService service;
-	
+		
 	@RequestMapping("/json")
 	//json으로 넣기위해서 @RequestBody으로 파싱한다
-	public String receiveJsonData(@RequestBody String j ) {
+	public String receiveJsonData(@RequestBody Json j ) {
 		System.out.println("컨트롤러에 들어옴!");
 		System.out.println(j);
-//		System.out.println(j.getGreenLightTime());
+		System.out.println(j.getGreenLightTime());
 		this.j = j;
 		//최종에 jsonService삭제 예정
 		return null;
 	}
+	
+
 	
 	//.json파일 리턴하는 코드
 //	@GetMapping("/requestjson")
@@ -61,12 +86,29 @@ public class jsonController {
 	
 	
 	@GetMapping("/requestjson")  // 요청을 받을 URL
-    public String getJsonData() {
+    public Json getJsonData() {
         
         return j;  // JSON 데이터 반환
     }
 	
 	
+	
+	@RequestMapping("/getBattery")
+	//json으로 넣기위해서 @RequestBody으로 파싱한다
+	public String receiveJsonData(@RequestBody battery b ) {
+		System.out.println("컨트롤러에 베터리 들어옴!");
+		System.out.println(b);
+		this.b = b;
+		
+		//최종에 jsonService삭제 예정
+		return null;
+	}
+	
+	@GetMapping("/requestbattery")  // 요청을 받을 URL
+    public battery getBatteryData() {
+        
+        return b;  // JSON 데이터 반환
+    }
 	
 //	@RequestMapping("/json")
 //	//json으로 넣기위해서 @RequestBody으로 파싱한다
