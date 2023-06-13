@@ -115,7 +115,6 @@
 
 #threebox-3 {
     width: 22%;
-    
 }
 
 
@@ -123,14 +122,19 @@
 #weather-title {
     margin-top: 20px;
     margin-left: 40px;
+    margin-bottom: auto;
 }
-
+#currentTime {
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-bottom: auto;
+    /* margin-bottom: 20px; */
+}
 .main-bigBox {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 94%;
-    background-color: #83B6A5;
     height: 250px;
     border-radius: 35px;
     margin-left: auto;
@@ -763,4 +767,19 @@
     /* background-color: #5085BB; */
     margin: 0 auto;
     text-align: center;
+}
+
+#bigBox-1 {
+    width: 68%;
+
+}
+
+#bigBox-2 {
+    width: 25%;
+    margin-left: 5%;
+}
+
+.main-table {
+    text-align: left; 
+    margin-left: 20px;
 }

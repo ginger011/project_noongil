@@ -16,8 +16,6 @@ var customOverlay = [];
 // 여러개의 마커를 담는 배열
 var marker = [];
 
-
-
 function loadBoard() {
 	$.ajax({
 		url: "api/board/",
@@ -50,8 +48,8 @@ function loadBoard() {
 					'<p>' + data[i].blockID + '</p>' +
 					'<p>' + data[i].blockAddress + '</p>' +
 					'<div class="form-check form-switch">' +
-					'<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked' + i + '" checked>' +
-					'<label class="form-check-label" for="flexSwitchCheckChecked' + i + '">열선</label>' +
+					'<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked' + i + '">' +
+					'<label class="form-check-label" for="flexSwitchCheckDefault' + i + '">열선</label>' +
 					'</div>' +
 					'</div>';
 		
