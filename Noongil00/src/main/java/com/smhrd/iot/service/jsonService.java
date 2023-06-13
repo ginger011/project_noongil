@@ -36,6 +36,11 @@ public class jsonService {
             // 수정된 JSON 데이터를 .json 파일에 저장
             objectMapper.writeValue(new File(filePath), jsonNode);
             System.out.println("json.json 파일이 수정되었습니다.");
+            
+//          // 현재 실행 중인 애플리케이션의 ApplicationContext를 가져옵니다.
+//          ConfigurableApplicationContext applicationContext = SpringApplication.getContext();
+//          // 애플리케이션을 종료하고 새로운 애플리케이션을 시작합니다.
+//          SpringApplication.exit(applicationContext, () -> 0);
 
         } catch (IOException e) {
             e.printStackTrace();
